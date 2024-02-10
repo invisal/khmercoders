@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1707410039803,
+      "tag": "0000_panoramic_northstar",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1707412772939,
+      "tag": "0001_empty_thanos",
+      "breakpoints": true
+    }
+  ]
+}
