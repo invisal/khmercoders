@@ -4,6 +4,7 @@ import { cache } from "react";
 import * as context from "next/headers";
 import { libsql } from "@lucia-auth/adapter-sqlite";
 import { sqlite } from "@/lib/db/index";
+import { env } from "../env.mjs";
 
 export const auth = lucia({
   adapter: libsql(sqlite, {
@@ -11,7 +12,7 @@ export const auth = lucia({
     key: "user_key",
     session: "user_session",
   }),
-  env: "DEV",
+  env: env.NODE_ENV === "production" ? "PROD" : "DEV",
   middleware: nextjs_future(),
   sessionCookie: { expires: false },
   getUserAttributes: (data) => {
