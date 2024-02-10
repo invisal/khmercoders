@@ -149,4 +149,20 @@ const HomePage = async () => {
 
 ```
 
+### Convention
+
+- filename should be in `kebab-case`
+- variable name should be in `camelCase`
+- constant should be in `UPPERCASE`
+- component should be in `PascalCase`
+
+### Docs
+
+- [DrizzleORM](https://orm.drizzle.team)
+- [Zod](https://zod.dev)
+- [Lucia Auth](https://lucia-auth.com/)
+- [EditorJS](https://editorjs.io/)
+- [Shadcn UI](https://ui.shadcn.com)
+- [Radix Primitive](https://www.radix-ui.com/primitives)
+
 More docs to come...
