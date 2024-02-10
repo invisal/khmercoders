@@ -29,6 +29,10 @@ yarn-error.log*
 .env*.local
 .env
 
+# local sqlite db
+*.sqlite
+*.db
+
 # vercel
 .vercel
 

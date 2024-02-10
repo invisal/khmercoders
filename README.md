@@ -8,7 +8,7 @@ A unified blogging platform for khmer coders.
 
 2. Update the `.env`
 
-You can create a free turso account use a serverless SquealLite DB.
+You can create a free turso account use a serverless Squealite DB.
 Where you need to add into your `.env`:
 
 - `DATABASE_URL`
