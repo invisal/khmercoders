@@ -5,7 +5,18 @@ A unified blogging platform for khmer coders.
 ### Setup
 
 1. Clone the repo
+
 2. Update the `.env`
+
+You can create a free turso account use a serverless SquealLite DB.
+Where you need to add into your `.env`:
+
+- `DATABASE_URL`
+- `DATABASE_AUTH_TOKEN`
+
+Or you can create a `dev.db` file in the root directory then in your `.env` just add
+`DATABASE_URL="file:./dev.db"`, you can change the database name to wutever u like
+
 3. Installation and Development
 
 ```sh
