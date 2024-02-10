@@ -18,7 +18,7 @@ import Table from "@editorjs/table";
 import Embed from "@editorjs/embed";
 import Image from "@editorjs/image";
 import Link from "@editorjs/link";
-import Code from "@rxpm/editor-js-code";
+import Code from "./plugins/code";
 
 export const tools: Record<string, ToolSettings | ToolConstructable> = {
   header: Header,

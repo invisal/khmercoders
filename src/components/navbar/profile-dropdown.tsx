@@ -9,10 +9,22 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { IconLogout, IconSettings, IconUser } from "@tabler/icons-react";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export const ProfileDropdown = () => {
-  const handleSignout = () => {
-    fetch("/api/sign-out", { method: "POST" });
+  const router = useRouter();
+  const handleSignout = async () => {
+    const response = await fetch("/api/sign-out", {
+      method: "POST",
+      redirect: "manual",
+    });
+
+    if (response.status === 0) {
+      return router.refresh();
+    }
+
+    toast.error("Failed to signout");
   };
 
   return (
