@@ -1,4 +1,4 @@
-import { env } from "@/lib/env";
+import { env } from "@/lib/env.mjs";
 
 import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
