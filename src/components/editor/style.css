@@ -26,6 +26,10 @@
   @apply !bg-accent/50;
 }
 
+::selection {
+  @apply !bg-primary/50;
+}
+
 /**/
 
 .ce-toolbar__plus,

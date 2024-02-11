@@ -12,9 +12,9 @@ import { ToolConstructable, ToolSettings } from "@editorjs/editorjs";
 import Embed from "@editorjs/embed";
 import Header from "@editorjs/header";
 import Image from "@editorjs/image";
+import InlineCode from "@editorjs/inline-code";
 import Link from "@editorjs/link";
 import NestedList from "@editorjs/nested-list";
-// Here them plugins with no declaration files 😭
 import Paragraph from "@editorjs/paragraph";
 import Table from "@editorjs/table";
 
@@ -31,6 +31,10 @@ export const tools: Record<string, ToolSettings | ToolConstructable> = {
   embed: Embed,
   link: Link,
   code: Code,
+  inlineCode: {
+    class: InlineCode,
+    shortcut: "CMD+SHIFT+M",
+  },
 
   image: {
     class: Image,
