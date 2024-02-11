@@ -36,3 +36,35 @@
 .ce-toolbar__settings-btn {
   @apply text-foreground hover:bg-accent;
 }
+
+/**/
+
+.ce-inline-toolbar {
+  @apply bg-background border-border;
+}
+
+.ce-inline-toolbar__dropdown {
+  @apply hover:bg-accent;
+}
+
+.ce-inline-toolbar__buttons > button:hover {
+  @apply hover:!bg-accent;
+}
+
+/**/
+
+.ce-conversion-toolbar {
+  @apply bg-background border-border;
+}
+
+.ce-conversion-tool {
+  @apply hover:bg-accent;
+}
+
+.ce-conversion-tool__icon {
+  @apply bg-accent ring-0;
+}
+
+.ce-conversion-tool.ce-conversion-tool--focused {
+  @apply !bg-accent;
+}

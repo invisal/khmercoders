@@ -55,7 +55,7 @@ export const CodeEditor = ({
         language={language}
         defaultValue={value || DEFAULT.value}
         className={cn(
-          "!bg-card rounded-xl border !font-mono !text-base",
+          "!bg-accent rounded-xl border !font-mono !text-base",
           className,
         )}
         disabled={disabled}

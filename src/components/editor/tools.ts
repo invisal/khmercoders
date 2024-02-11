@@ -17,25 +17,34 @@ import Link from "@editorjs/link";
 import NestedList from "@editorjs/nested-list";
 import Paragraph from "@editorjs/paragraph";
 import Table from "@editorjs/table";
+import Underline from "@editorjs/underline";
+import StrikeThrough from "@sotaproject/strikethrough";
 
 export const tools: Record<string, ToolSettings | ToolConstructable> = {
-  header: {
-    class: Header,
-    inlineToolbar: ["link"],
+  // typography
+  header: Header,
+  paragraph: {
+    class: Paragraph,
+    inlineToolbar: ["strikethrough", "inlineCode", "underline"],
   },
-  paragraph: Paragraph,
-  delimiter: Delimiter,
+
+  // list
   nestedlist: NestedList,
   checklist: CheckList,
+
+  // special
+  delimiter: Delimiter,
   table: Table,
   embed: Embed,
   link: Link,
   code: Code,
-  inlineCode: {
-    class: InlineCode,
-    shortcut: "CMD+SHIFT+M",
-  },
+  strikethrough: StrikeThrough,
 
+  // inline
+  underline: Underline,
+  inlineCode: InlineCode,
+
+  // extra configs
   image: {
     class: Image,
     config: {
