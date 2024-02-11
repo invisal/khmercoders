@@ -19,7 +19,10 @@ import Paragraph from "@editorjs/paragraph";
 import Table from "@editorjs/table";
 
 export const tools: Record<string, ToolSettings | ToolConstructable> = {
-  header: Header,
+  header: {
+    class: Header,
+    inlineToolbar: ["link"],
+  },
   paragraph: Paragraph,
   delimiter: Delimiter,
   nestedlist: NestedList,

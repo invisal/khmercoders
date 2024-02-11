@@ -1,5 +1,7 @@
 "use client";
 
+import "./style.css";
+
 import { useEffect, useRef } from "react";
 
 import { tools } from "./tools";
@@ -31,5 +33,10 @@ export const Editor = () => {
     };
   }, []);
 
-  return <div id={EDITOR_ID} />;
+  return (
+    <div
+      id={EDITOR_ID}
+      className=" dark:prose-invert prose-orange mx-auto max-w-[80ch] space-y-0"
+    />
+  );
 };

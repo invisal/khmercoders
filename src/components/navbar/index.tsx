@@ -17,7 +17,7 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
   return (
     <nav className="flex items-center justify-between gap-x-5 border-b px-5 py-2">
       <div className="flex items-center gap-3">
-        <span className="bg-secondary flex size-10 items-center justify-center rounded-xl border">
+        <span className="bg-secondary text-primary flex size-10 items-center justify-center rounded-xl border">
           <IconAsterisk size={24} />
         </span>
 

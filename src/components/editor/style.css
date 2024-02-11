@@ -1,0 +1,34 @@
+.ce-popover {
+  @apply bg-background border-border;
+}
+
+.ce-popover-item {
+  @apply text-foreground hover:ring-1 ring-inset ring-primary/10 hover:!bg-primary/5 dark:hover:!bg-primary/10 dark:hover:!ring-primary/15;
+}
+
+.ce-popover-item.ce-popover-item--focused {
+  @apply !ring-1 !ring-inset !ring-primary/10 !bg-primary/5 dark:!bg-primary/10 dark:!ring-primary/15;
+}
+
+.ce-popover-item__icon {
+  @apply bg-accent ring-0;
+}
+
+/**/
+
+.ce-popover__search {
+  @apply bg-background border-border;
+}
+
+/**/
+
+.ce-block--selected .ce-block__content {
+  @apply !bg-accent/50;
+}
+
+/**/
+
+.ce-toolbar__plus,
+.ce-toolbar__settings-btn {
+  @apply text-foreground hover:bg-accent;
+}
