@@ -1,8 +1,6 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
-console.log(process.env.SKIP_ENV);
-
 export const env = createEnv({
   server: {
     NODE_ENV: z

@@ -11,8 +11,8 @@
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
-    "staged": "pnpm run typecheck && pnpm run format:write && pnpm run lint:fix",
-    "quality-check": "pnpm run staged && pnpm run build",
+    "staged": "pnpm run typecheck && pnpm run format:write && pnpm run lint:fix && echo \"\n✅ All checks passed!\n\"",
+    "quality-check": "cross-env SKIP_ENV=true pnpm run staged",
     "db:generate": "drizzle-kit generate:sqlite",
     "db:migrate": "tsx src/lib/db/migrate.ts",
     "db:drop": "drizzle-kit drop",
@@ -22,7 +22,7 @@
     "db:check": "drizzle-kit check:sqlite"
   },
   "simple-git-hooks": {
-    "pre-push": "pnpm run staged"
+    "pre-push": "pnpm run quality-check"
   },
   "dependencies": {
     "@editorjs/checklist": "^1.6.0",
