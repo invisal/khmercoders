@@ -1,8 +1,8 @@
-import { auth } from "@/lib/auth/lucia";
 import { revalidatePath } from "next/cache";
 import * as context from "next/headers";
-
 import { NextResponse, type NextRequest } from "next/server";
+
+import { auth } from "@/lib/auth/lucia";
 
 export const POST = async (request: NextRequest) => {
   const authRequest = auth.handleRequest(request.method, context);

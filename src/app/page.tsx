@@ -1,7 +1,8 @@
 import ArticlePreview from "@/components/articles/ArticlePreview";
+import { getUserAuth } from "@/lib/auth/utils";
+
 import HeroBanner from "@/components/hero-banner";
 import { Navbar } from "@/components/navbar";
-import { getUserAuth } from "@/lib/auth/utils";
 
 export default async function HomePage() {
   const session = await getUserAuth();

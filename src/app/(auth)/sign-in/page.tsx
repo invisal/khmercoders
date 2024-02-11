@@ -1,12 +1,13 @@
-import AuthForm from "@/components/auth/form";
+import Link from "next/link";
+
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
+import AuthForm from "@/components/auth/form";
 
 const Page = async () => {
   return (
-    <main className="max-w-lg mx-auto my-4 bg-popover p-10">
-      <h1 className="text-2xl font-bold text-center">
+    <main className="bg-popover mx-auto my-4 max-w-lg p-10">
+      <h1 className="text-center text-2xl font-bold">
         Sign in to your account
       </h1>
       <AuthForm action="/api/sign-in">
@@ -21,11 +22,11 @@ const Page = async () => {
         <Input type="password" name="password" id="password" />
         <br />
       </AuthForm>
-      <div className="mt-4 text-sm text-center text-muted-foreground">
+      <div className="text-muted-foreground mt-4 text-center text-sm">
         Don&apos;t have an account yet?{" "}
         <Link
           href="/sign-up"
-          className="text-accent-foreground underline hover:text-primary"
+          className="text-accent-foreground hover:text-primary underline"
         >
           Create an account
         </Link>

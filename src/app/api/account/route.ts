@@ -1,8 +1,10 @@
+import { revalidatePath } from "next/cache";
+
 import { getUserAuth } from "@/lib/auth/utils";
 import { db } from "@/lib/db/index";
 import { users } from "@/lib/db/schema/auth";
+
 import { eq } from "drizzle-orm";
-import { revalidatePath } from "next/cache";
 
 export async function PUT(request: Request) {
   const { session } = await getUserAuth();

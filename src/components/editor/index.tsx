@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Editorjs from "@editorjs/editorjs";
+
 import { tools } from "./tools";
+import Editorjs from "@editorjs/editorjs";
 
 export const EDITOR_ID = "@editorjs";
 

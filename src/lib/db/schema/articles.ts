@@ -1,10 +1,10 @@
+import { nanoid, timestamps } from "@/lib/utils";
+
+import { users } from "./auth";
 import { sql } from "drizzle-orm";
-import { text, sqliteTable } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
-
-import { nanoid, timestamps } from "@/lib/utils";
-import { users } from "./auth";
 
 export const articles = sqliteTable("articles", {
   id: text("id")
@@ -27,7 +27,7 @@ export const articles = sqliteTable("articles", {
     .default(sql`CURRENT_TIMESTAMP`),
 });
 
-// First we create a base schema for the articles table 
+// First we create a base schema for the articles table
 // Note that we omit the timestamps from the base schema
 const baseSchema = createSelectSchema(articles).omit(timestamps);
 

@@ -1,10 +1,12 @@
-import { lucia } from "lucia";
-import { nextjs_future } from "lucia/middleware";
 import { cache } from "react";
 import * as context from "next/headers";
-import { libsql } from "@lucia-auth/adapter-sqlite";
+
 import { sqlite } from "@/lib/db/index";
+
 import { env } from "../env.mjs";
+import { libsql } from "@lucia-auth/adapter-sqlite";
+import { lucia } from "lucia";
+import { nextjs_future } from "lucia/middleware";
 
 export const auth = lucia({
   adapter: libsql(sqlite, {

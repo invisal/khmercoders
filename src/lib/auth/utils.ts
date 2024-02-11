@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+
 import { getPageSession } from "@/lib/auth/lucia";
 
 export type AuthSession = {
