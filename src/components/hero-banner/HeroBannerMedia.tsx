@@ -14,7 +14,7 @@ export default function HeroBannerMedia() {
 
   return (
     <div>
-      <Lottie options={defaultOptions} height={400} width={400} />
+      <Lottie options={defaultOptions} width={320} height={320} />
     </div>
   );
 }

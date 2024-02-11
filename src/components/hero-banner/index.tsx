@@ -3,8 +3,8 @@ import HeroBannerMedia from "./HeroBannerMedia";
 
 export default function HeroBanner() {
   return (
-    <div className="flex gap-12">
-      <div className="flex-grow justify-center flex flex-col gap-8">
+    <div className="flex gap-12 flex-col lg:flex-row mt-10">
+      <div className="flex-grow flex-col justify-center flex gap-8 lg:pr-16">
         <h1 className="text-5xl font-semibold">Khmer Coders</h1>
         <p className='text-lg'>
           With over 7,000 members, KhmerCoders is one of the largest Cambodian
