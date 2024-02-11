@@ -11,6 +11,8 @@
     "typecheck": "tsc --noEmit",
     "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
     "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "staged": "pnpm run typecheck && pnpm run format:write && pnpm run lint:fix",
+    "quality-check": "pnpm run staged && pnpm run build",
     "db:generate": "drizzle-kit generate:sqlite",
     "db:migrate": "tsx src/lib/db/migrate.ts",
     "db:drop": "drizzle-kit drop",
@@ -18,6 +20,9 @@
     "db:push": "drizzle-kit push:sqlite",
     "db:studio": "drizzle-kit studio",
     "db:check": "drizzle-kit check:sqlite"
+  },
+  "simple-git-hooks": {
+    "pre-push": "pnpm run staged"
   },
   "dependencies": {
     "@editorjs/checklist": "^1.6.0",
@@ -51,6 +56,7 @@
     "cmdk": "^0.2.1",
     "drizzle-orm": "^0.29.3",
     "drizzle-zod": "^0.5.1",
+    "jiti": "^1.21.0",
     "lucia": "2.7.7",
     "lucide-react": "^0.323.0",
     "nanoid": "^5.0.5",
@@ -72,6 +78,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.1",
     "drizzle-kit": "^0.20.14",
     "eslint": "^8",
@@ -82,6 +89,7 @@
     "postcss": "^8",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "simple-git-hooks": "^2.9.0",
     "tailwindcss": "^3.3.0",
     "tsx": "^4.7.0",
     "typescript": "^5"
