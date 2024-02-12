@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import {
   DropdownMenu,
@@ -10,7 +12,6 @@ import {
 } from "../ui/dropdown-menu";
 import { IconLogout, IconSettings, IconUser } from "@tabler/icons-react";
 import { toast } from "sonner";
-import { useRouter } from "next/navigation";
 
 export const ProfileDropdown = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ export const ProfileDropdown = () => {
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Avatar className="border h-9 w-9 hover:brightness-95">
+          <Avatar className="size-9 border hover:brightness-95">
             <AvatarFallback>JD</AvatarFallback>
             <AvatarImage
               alt="profile"
@@ -46,20 +47,20 @@ export const ProfileDropdown = () => {
           className="text-muted-foreground min-w-44"
         >
           <DropdownMenuItem asChild>
-            <Link href="/profile" className="flex gap-x-2 cursor-pointer">
+            <Link href="/profile" className="flex cursor-pointer gap-x-2">
               <IconUser size={16} />
               <span>Profile</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild>
-            <Link href="/settings" className="flex gap-x-2 cursor-pointer">
+            <Link href="/settings" className="flex cursor-pointer gap-x-2">
               <IconSettings size={16} />
               <span>Settings</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={handleSignout}
-            className="flex gap-x-2 cursor-pointer hover:!text-destructive focus:!text-destructive"
+            className="hover:!text-destructive focus:!text-destructive flex cursor-pointer gap-x-2"
           >
             <IconLogout size={16} />
             <span>Signout</span>

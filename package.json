@@ -7,6 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "next lint --fix",
+    "typecheck": "tsc --noEmit",
+    "format:write": "prettier --write \"**/*.{ts,tsx,mdx}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,mdx}\" --cache",
+    "staged": "pnpm run typecheck && pnpm run format:write && pnpm run lint:fix && echo \"\n✅ All checks passed!\n\"",
+    "quality-check": "cross-env SKIP_ENV=true pnpm run staged",
     "db:generate": "drizzle-kit generate:sqlite",
     "db:migrate": "tsx src/lib/db/migrate.ts",
     "db:drop": "drizzle-kit drop",
@@ -14,6 +20,9 @@
     "db:push": "drizzle-kit push:sqlite",
     "db:studio": "drizzle-kit studio",
     "db:check": "drizzle-kit check:sqlite"
+  },
+  "simple-git-hooks": {
+    "pre-push": "pnpm run quality-check"
   },
   "dependencies": {
     "@editorjs/checklist": "^1.6.0",
@@ -47,6 +56,7 @@
     "cmdk": "^0.2.1",
     "drizzle-orm": "^0.29.3",
     "drizzle-zod": "^0.5.1",
+    "jiti": "^1.21.0",
     "lucia": "2.7.7",
     "lucide-react": "^0.323.0",
     "nanoid": "^5.0.5",
@@ -61,17 +71,25 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/editorjs__header": "^2.6.3",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.4.1",
     "drizzle-kit": "^0.20.14",
     "eslint": "^8",
     "eslint-config-next": "14.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-tailwindcss": "^3.14.2",
     "postcss": "^8",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "simple-git-hooks": "^2.9.0",
     "tailwindcss": "^3.3.0",
     "tsx": "^4.7.0",
     "typescript": "^5"

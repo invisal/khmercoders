@@ -1,7 +1,8 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 
 type Action = "/api/sign-in" | "/api/sign-up" | "/api/sign-out";
@@ -42,8 +43,8 @@ const AuthForm = ({
       }}
     >
       {errors ? (
-        <div className="bg-red-100 p-3 my-4">
-          <h3 className="font-bold text-md">Error!</h3>
+        <div className="my-4 bg-red-100 p-3">
+          <h3 className="text-md font-bold">Error!</h3>
           <p className="text-sm">{errors.error}</p>
         </div>
       ) : null}

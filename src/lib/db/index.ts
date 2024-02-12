@@ -1,6 +1,7 @@
-import { drizzle } from "drizzle-orm/libsql";
+import { env } from "@/lib/env";
+
 import { createClient } from "@libsql/client";
-import { env } from "@/lib/env.mjs";
+import { drizzle } from "drizzle-orm/libsql";
 
 export const sqlite = createClient({
   url: env.DATABASE_URL,

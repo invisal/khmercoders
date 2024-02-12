@@ -1,5 +1,6 @@
+import { env } from "@/lib/env";
+
 import type { Config } from "drizzle-kit";
-import { env } from "@/lib/env.mjs";
 
 export default {
   schema: "./src/lib/db/schema",
@@ -8,5 +9,5 @@ export default {
   dbCredentials: {
     url: env.DATABASE_URL,
     authToken: env.DATABASE_AUTH_TOKEN,
-  }
+  },
 } satisfies Config;

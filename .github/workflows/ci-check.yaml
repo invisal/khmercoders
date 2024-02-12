@@ -1,0 +1,36 @@
+name: CI Check
+
+on:
+  - push
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    env:
+      SKIP_ENV: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8.13.1
+          run_install: false
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Type check
+        run: pnpm run typecheck
+
+      - name: Lint check
+        run: npm run lint
+
+      - name: Log success
+        run: echo "✅ Success!"

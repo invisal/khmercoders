@@ -1,6 +1,6 @@
+import { CodeEditor } from "./code-editor";
 import { BlockTool } from "@editorjs/editorjs";
 import { createRoot } from "react-dom/client";
-import { CodeEditor } from "./code-editor";
 
 interface CodeData {
   content: string;

@@ -1,9 +1,11 @@
-import { IconAsterisk, IconEdit } from "@tabler/icons-react";
-import { SearchInput } from "./search-input";
 import Link from "next/link";
-import { ProfileDropdown } from "./profile-dropdown";
+
 import { AuthSession } from "@/lib/auth/utils";
+
 import { Button } from "../ui/button";
+import { ProfileDropdown } from "./profile-dropdown";
+import { SearchInput } from "./search-input";
+import { IconAsterisk, IconEdit } from "@tabler/icons-react";
 
 interface NavBarProps {
   session: AuthSession;
@@ -13,9 +15,9 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
   const isLogin = !!session.session;
 
   return (
-    <nav className="px-5 py-2 border-b flex gap-x-5 items-center justify-between">
-      <div className="flex gap-3 items-center">
-        <span className="bg-secondary border size-10 flex items-center justify-center rounded-xl">
+    <nav className="flex items-center justify-between gap-x-5 border-b px-5 py-2">
+      <div className="flex items-center gap-3">
+        <span className="bg-secondary flex size-10 items-center justify-center rounded-xl border">
           <IconAsterisk size={24} />
         </span>
 
@@ -29,11 +31,11 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
       )}
 
       {isLogin && (
-        <ul className="flex gap-x-5 items-center">
+        <ul className="flex items-center gap-x-5">
           <li>
             <Link
               href="/write"
-              className="flex text-sm font-medium text-muted-foreground hover:text-foreground gap-x-2 items-center"
+              className="text-muted-foreground hover:text-foreground flex items-center gap-x-2 text-sm font-medium"
             >
               <IconEdit size={18} />
               <span>Write</span>

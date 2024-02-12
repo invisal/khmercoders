@@ -1,11 +1,12 @@
-import { checkAuth } from "@/lib/auth/utils";
 import { PropsWithChildren } from "react";
+
+import { checkAuth } from "@/lib/auth/utils";
 
 export default async function AppLayout({ children }: PropsWithChildren) {
   // VALIDATE USER
   await checkAuth();
 
   return (
-    <main className="flex-1 md:p-8 pt-2 p-8 overflow-y-auto">{children}</main>
+    <main className="flex-1 overflow-y-auto p-8 pt-2 md:p-8">{children}</main>
   );
 }

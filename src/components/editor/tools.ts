@@ -3,22 +3,20 @@
 // Dunno wut to do, ignoring the ts errors for now
 // Dang it!
 
-import { ToolConstructable, ToolSettings } from "@editorjs/editorjs";
-
 import { Uploader } from "@/lib/uploader";
 
-import Header from "@editorjs/header";
-
-// Here them plugins with no declaration files 😭
-import Paragraph from "@editorjs/paragraph";
-import Delimiter from "@editorjs/delimiter";
-import NestedList from "@editorjs/nested-list";
+import Code from "./plugins/code";
 import CheckList from "@editorjs/checklist";
-import Table from "@editorjs/table";
+import Delimiter from "@editorjs/delimiter";
+import { ToolConstructable, ToolSettings } from "@editorjs/editorjs";
 import Embed from "@editorjs/embed";
+import Header from "@editorjs/header";
 import Image from "@editorjs/image";
 import Link from "@editorjs/link";
-import Code from "./plugins/code";
+import NestedList from "@editorjs/nested-list";
+// Here them plugins with no declaration files 😭
+import Paragraph from "@editorjs/paragraph";
+import Table from "@editorjs/table";
 
 export const tools: Record<string, ToolSettings | ToolConstructable> = {
   header: Header,

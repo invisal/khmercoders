@@ -1,9 +1,10 @@
-import { auth } from "@/lib/auth/lucia";
-import { LuciaError } from "lucia";
 import * as context from "next/headers";
 import { NextResponse } from "next/server";
-
 import type { NextRequest } from "next/server";
+
+import { auth } from "@/lib/auth/lucia";
+
+import { LuciaError } from "lucia";
 
 export const POST = async (request: NextRequest) => {
   const formData = await request.formData();
