@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback } from "../ui/avatar";
+import ProfilePreview from "../profile-preview";
 import {
   Card,
   CardDescription,
@@ -18,15 +18,7 @@ export default function ArticlePreview() {
         </CardDescription>
       </CardHeader>
       <CardFooter>
-        <div className="flex gap-4">
-          <Avatar>
-            <AvatarFallback>CN</AvatarFallback>
-          </Avatar>
-          <div>
-            <div className="text-sm font-semibold">Rina Bouy</div>
-            <div className="text-xs">20 articles</div>
-          </div>
-        </div>
+        <ProfilePreview />
       </CardFooter>
     </Card>
   );
