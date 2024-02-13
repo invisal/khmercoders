@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Fragment, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -41,7 +43,7 @@ export const CodeEditor = ({
   const [language, setLanguage] = useState(defaultLang || DEFAULT.language);
 
   return (
-    <div className="relative">
+    <div className="not-prose relative">
       <div className="absolute right-3 top-3 z-10">
         <LanguageSelect
           disabled={disabled}
@@ -52,10 +54,11 @@ export const CodeEditor = ({
       <Editor
         padding={18}
         minHeight={300}
+        data-color-mode="light"
         language={language}
         defaultValue={value || DEFAULT.value}
         className={cn(
-          "!bg-accent rounded-xl border !font-mono !text-base",
+          "!bg-accent size-full flex-1 rounded-xl border !font-mono *:!text-base",
           className,
         )}
         disabled={disabled}

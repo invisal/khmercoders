@@ -5,7 +5,7 @@ import "./style.css";
 import { useCallback, useEffect, useRef } from "react";
 
 import { tools } from "./tools";
-import Editorjs from "@editorjs/editorjs";
+import Editorjs, { OutputData } from "@editorjs/editorjs";
 // @ts-expect-error - no types
 import DragDrop from "editorjs-drag-drop";
 // @ts-expect-error - no types
@@ -13,18 +13,25 @@ import Undo from "editorjs-undo";
 
 export const EDITOR_ID = "@editorjs";
 
-export const Editor = () => {
+export interface EditorProps {
+  onChange?: (editor: Editorjs) => void;
+  autofocus?: boolean;
+  placeholder?: string;
+  data?: OutputData;
+}
+
+export const Editor = ({ onChange, ...editorProps }: EditorProps) => {
   const editor = useRef<Editorjs | null>(null);
 
-  const onReady = useCallback(() => {
+  const handleOnReady = useCallback(() => {
     new Undo({ editor: editor.current });
     new DragDrop(editor.current);
   }, [editor]);
 
-  const onChange = useCallback(async () => {
-    const output = await editor.current?.save();
-    console.log({ output });
-  }, [editor]);
+  const handleOnChange = useCallback(() => {
+    if (!editor.current) return;
+    onChange?.(editor.current);
+  }, [editor, onChange]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -35,9 +42,9 @@ export const Editor = () => {
       autofocus: true,
       placeholder: "Write something...",
       tools: tools,
-      inlineToolbar: ["link", "inlineCode"],
-      onReady: onReady,
-      onChange: onChange,
+      onReady: handleOnReady,
+      onChange: handleOnChange,
+      ...editorProps,
     });
 
     return () => {
@@ -48,9 +55,6 @@ export const Editor = () => {
   }, []);
 
   return (
-    <div
-      id={EDITOR_ID}
-      className=" dark:prose-invert prose-orange mx-auto max-w-[80ch] space-y-0"
-    />
+    <div id={EDITOR_ID} className="prose dark:prose-invert prose-orange" />
   );
 };

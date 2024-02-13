@@ -20,23 +20,41 @@ import Table from "@editorjs/table";
 import Underline from "@editorjs/underline";
 import StrikeThrough from "@sotaproject/strikethrough";
 
+const inlineToolbar = [
+  "bold",
+  "italic",
+  "inlineCode",
+  "underline",
+  "strikethrough",
+  "link",
+];
+
 export const tools: Record<string, ToolSettings | ToolConstructable> = {
   // typography
-  header: Header,
+  header: {
+    class: Header,
+    inlineToolbar,
+  },
   paragraph: {
     class: Paragraph,
-    inlineToolbar: ["strikethrough", "inlineCode", "underline"],
+    inlineToolbar,
   },
 
   // list
-  nestedlist: NestedList,
-  checklist: CheckList,
+  nestedlist: {
+    class: NestedList,
+    inlineToolbar,
+  },
+  checklist: {
+    class: CheckList,
+    inlineToolbar,
+  },
 
   // special
   delimiter: Delimiter,
   table: Table,
   embed: Embed,
-  link: Link,
+  fancyLink: Link,
   code: Code,
   strikethrough: StrikeThrough,
 
