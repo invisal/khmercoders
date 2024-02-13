@@ -1,7 +1,7 @@
 import { nanoid, timestamps } from "@/lib/utils";
 
 import { users } from "./auth";
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import { sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -28,6 +28,14 @@ export const articles = sqliteTable("articles", {
     .notNull()
     .default(sql`CURRENT_TIMESTAMP`),
 });
+
+// Define relationships
+export const articlesRelations = relations(articles, ({ one }) => ({
+  author: one(users, {
+    fields: [articles.userId],
+    references: [users.id],
+  }),
+}));
 
 // First we create a base schema for the articles table
 // Note that we omit the timestamps from the base schema
