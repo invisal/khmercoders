@@ -29,7 +29,7 @@ CREATE TABLE `user` (
 	`id` text PRIMARY KEY NOT NULL,
 	`name` text,
 	`email` text,
-	`username` text,
+	`username` text NOT NULL,
 	`avatar` text,
 	`about` text,
 	`created_at` text DEFAULT CURRENT_TIMESTAMP NOT NULL,
