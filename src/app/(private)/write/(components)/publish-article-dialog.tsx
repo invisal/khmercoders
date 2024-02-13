@@ -3,6 +3,8 @@
 import { PropsWithChildren, useMemo } from "react";
 import { useRouter } from "next/navigation";
 
+import { DRAFT_KEY } from "@/config/keys";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -60,6 +62,7 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
     const result = await axios.post("/api/article", body);
     if (result.status === 201) {
       toast.success("Article published successfully");
+      window.localStorage.removeItem(DRAFT_KEY);
       return router.push("/");
     } else {
       toast.error("Failed to publish article");

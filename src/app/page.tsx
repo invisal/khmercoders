@@ -12,7 +12,6 @@ export const revalidate = 0;
 export default async function HomePage() {
   const session = await getUserAuth();
   const articles = await getAllArticles();
-  console.log(articles);
 
   return (
     <div>
