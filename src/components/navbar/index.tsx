@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AuthSession } from "@/lib/auth/utils";
 
 import { Logo } from "../logo";
+import { ThemeToggle } from "../theme/toggle";
 import { Button } from "../ui/button";
 import { ProfileDropdown } from "./profile-dropdown";
 import { SearchInput } from "./search-input";
@@ -21,6 +22,10 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
         <Logo />
 
         <SearchInput />
+      </div>
+
+      <div className="ml-auto mr-5">
+        <ThemeToggle />
       </div>
 
       {!isLogin && (

@@ -1,4 +1,3 @@
-import ProfilePreview from "../profile-preview";
 import Link from "next/link";
 
 import { Avatar, AvatarFallback } from "../ui/avatar";
