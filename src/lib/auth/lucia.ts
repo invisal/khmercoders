@@ -3,7 +3,7 @@ import * as context from "next/headers";
 
 import { sqlite } from "@/lib/db/index";
 
-import { env } from "../env";
+import { env } from "../env.mjs";
 import { libsql } from "@lucia-auth/adapter-sqlite";
 import { lucia } from "lucia";
 import { nextjs_future } from "lucia/middleware";
@@ -17,7 +17,7 @@ export const auth = lucia({
   env: env.NODE_ENV === "production" ? "PROD" : "DEV",
   middleware: nextjs_future(),
   sessionCookie: { expires: false },
-  getUserAttributes: (data) => {
+  getUserAttributes: data => {
     return {
       username: data.username,
       email: data.email,

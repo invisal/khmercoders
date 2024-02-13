@@ -11,7 +11,7 @@ export const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between gap-x-5 py-3">
-      <div className="flex gap-x-4 items-center">
+      <div className="flex items-center gap-x-4">
         <Logo />
         {isSaving ? <span>Saving...</span> : <span>Saved</span>}
       </div>

@@ -41,7 +41,7 @@ export default function WritePage() {
 
   return (
     <QuickProvider value={{ output, isSaving }}>
-      <div className="max-w-[80ch] mx-auto">
+      <div className="mx-auto max-w-[80ch]">
         <Navbar />
         <main className="p-10">
           <Editor data={output} onChange={handleOnChange} autofocus />
