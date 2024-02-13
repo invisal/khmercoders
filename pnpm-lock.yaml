@@ -125,9 +125,6 @@ dependencies:
   html-to-text:
     specifier: ^9.0.5
     version: 9.0.5
-  jiti:
-    specifier: ^1.21.0
-    version: 1.21.0
   lucia:
     specifier: 2.7.7
     version: 2.7.7
