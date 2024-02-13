@@ -10,6 +10,7 @@ export const articles = sqliteTable("articles", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => nanoid()),
+
   userId: text("user_id")
     .notNull()
     .references(() => users.id),
@@ -22,6 +23,7 @@ export const articles = sqliteTable("articles", {
   createdAt: text("created_at")
     .notNull()
     .default(sql`CURRENT_TIMESTAMP`),
+
   updatedAt: text("updated_at")
     .notNull()
     .default(sql`CURRENT_TIMESTAMP`),

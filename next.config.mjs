@@ -1,7 +1,4 @@
-import createJiti from "jiti";
-
-const jiti = createJiti(new URL(import.meta.url).pathname);
-jiti("./src/lib/env");
+import "./src/lib/env.mjs";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

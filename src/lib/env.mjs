@@ -1,6 +1,8 @@
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
+import "dotenv/config";
+
 export const env = createEnv({
   server: {
     NODE_ENV: z
@@ -12,11 +14,11 @@ export const env = createEnv({
 
   client: {},
 
-  runtimeEnv: {
-    DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
-    DATABASE_URL: process.env.DATABASE_URL,
-    NODE_ENV: process.env.NODE_ENV,
-  },
+  // runtimeEnv: {
+  //   DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
+  //   DATABASE_URL: process.env.DATABASE_URL,
+  //   NODE_ENV: process.env.NODE_ENV,
+  // },
 
   isServer: typeof window === "undefined",
   skipValidation: process.env.SKIP_ENV === "true",
