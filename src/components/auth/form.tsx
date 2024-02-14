@@ -43,7 +43,7 @@ const AuthForm = ({
       }}
     >
       {errors ? (
-        <div className="my-4 bg-red-100 p-3">
+        <div className="my-4 bg-[#cfa912] p-3 rounded-lg">
           <h3 className="text-md font-bold">Error!</h3>
           <p className="text-sm">{errors.error}</p>
         </div>
