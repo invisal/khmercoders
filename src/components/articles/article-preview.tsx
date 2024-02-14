@@ -1,4 +1,8 @@
-import ProfilePreview from "../profile-preview";
+import Link from "next/link";
+
+import { CompleteArticle } from "@/lib/query/article";
+
+import { Avatar, AvatarFallback } from "../ui/avatar";
 import {
   Card,
   CardDescription,
@@ -7,19 +11,32 @@ import {
   CardTitle,
 } from "../ui/card";
 
-export default function ArticlePreview() {
+export interface ArticlePreviewProps {
+  article: CompleteArticle;
+}
+
+export default function ArticlePreview({ article }: ArticlePreviewProps) {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Introductory Statistics (Personal Note 1)— Data</CardTitle>
-        <CardDescription>
-          The theory of probabilities is at bottom nothing but common sense
-          reduced to calculus — Laplace
-        </CardDescription>
-      </CardHeader>
-      <CardFooter>
-        <ProfilePreview />
-      </CardFooter>
-    </Card>
+    <Link href={`/@${article.author.name}/${article.id}`}>
+      <Card>
+        <CardHeader>
+          <CardTitle>{article.title}</CardTitle>
+          <CardDescription>{article.description}</CardDescription>
+        </CardHeader>
+        <CardFooter>
+          <div className="flex gap-4">
+            <Avatar>
+              <AvatarFallback className="uppercase">
+                {article.author?.name?.slice(0, 2)}
+              </AvatarFallback>
+            </Avatar>
+            <div>
+              <div className="text-sm font-semibold">{article.author.name}</div>
+              <div className="text-xs">20 articles</div>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+    </Link>
   );
 }

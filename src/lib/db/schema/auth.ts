@@ -1,17 +1,19 @@
-import { sql } from "drizzle-orm";
+import { articles } from "./articles";
+import { relations, sql } from "drizzle-orm";
 import { blob, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("user", {
   id: text("id").primaryKey(),
   name: text("name"),
   email: text("email"),
-  username: text("username").unique(),
+  username: text("username").unique().notNull(),
   avatar: text("avatar"),
   about: text("about"),
 
   createdAt: text("created_at")
     .notNull()
     .default(sql`CURRENT_TIMESTAMP`),
+
   updatedAt: text("updated_at")
     .notNull()
     .default(sql`CURRENT_TIMESTAMP`),
@@ -37,3 +39,7 @@ export const keys = sqliteTable("user_key", {
     .references(() => users.id),
   hashedPassword: text("hashed_password"),
 });
+
+export const usersRelations = relations(users, ({ many }) => ({
+  articles: many(articles),
+}));

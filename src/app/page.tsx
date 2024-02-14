@@ -1,12 +1,17 @@
 import { getUserAuth } from "@/lib/auth/utils";
+import { getAllArticles } from "@/lib/query/article";
 
 import ArticlePreview from "@/components/articles/article-preview";
 import HeroBanner from "@/components/hero-banner";
 import { Navbar } from "@/components/navbar";
 import ProfilePreview from "@/components/profile-preview";
 
+// revalidate on every request
+export const revalidate = 0;
+
 export default async function HomePage() {
   const session = await getUserAuth();
+  const articles = await getAllArticles();
 
   return (
     <div>
@@ -26,8 +31,8 @@ export default async function HomePage() {
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {new Array(6).fill(true).map((_, idx) => {
-              return <ArticlePreview key={idx} />;
+            {articles.map((article) => {
+              return <ArticlePreview key={article.id} article={article} />;
             })}
           </div>
         </div>

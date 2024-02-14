@@ -3,7 +3,7 @@ import * as context from "next/headers";
 
 import { sqlite } from "@/lib/db/index";
 
-import { env } from "../env";
+import { env } from "../env.mjs";
 import { libsql } from "@lucia-auth/adapter-sqlite";
 import { lucia } from "lucia";
 import { nextjs_future } from "lucia/middleware";

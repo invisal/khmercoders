@@ -29,7 +29,6 @@ corepack enable pnpm
 pnpm install
 
 # Run migration
-pnpm run db:generate
 pnpm run db:migrate
 
 # Run dev server

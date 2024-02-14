@@ -31,7 +31,7 @@ export default class Code implements BlockTool {
 
   render() {
     const holder = document.createElement("div");
-    const root = createRoot(holder);
+    const root = createRoot(holder, { identifierPrefix: "code-editor" });
 
     root.render(
       <CodeEditor
@@ -61,6 +61,14 @@ export default class Code implements BlockTool {
       content: content ?? "",
       language: lang ?? "",
     };
+  }
+
+  get data() {
+    return this._data;
+  }
+
+  set data(data: CodeData) {
+    this._data = data;
   }
 
   static get toolbox() {

@@ -10,11 +10,12 @@ export const Uploader = {
     // faking the upload process for now 😂
     return new Promise((resolve) => {
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = function () {
+        const url = URL.createObjectURL(file);
         resolve({
           success: 1,
           file: {
-            url: e?.target?.result as string,
+            url,
           },
         });
       };

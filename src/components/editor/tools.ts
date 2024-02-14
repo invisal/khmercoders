@@ -12,23 +12,57 @@ import { ToolConstructable, ToolSettings } from "@editorjs/editorjs";
 import Embed from "@editorjs/embed";
 import Header from "@editorjs/header";
 import Image from "@editorjs/image";
+import InlineCode from "@editorjs/inline-code";
 import Link from "@editorjs/link";
 import NestedList from "@editorjs/nested-list";
-// Here them plugins with no declaration files 😭
 import Paragraph from "@editorjs/paragraph";
 import Table from "@editorjs/table";
+import Underline from "@editorjs/underline";
+import StrikeThrough from "@sotaproject/strikethrough";
+
+const inlineToolbar = [
+  "bold",
+  "italic",
+  "inlineCode",
+  "underline",
+  "strikethrough",
+  "link",
+];
 
 export const tools: Record<string, ToolSettings | ToolConstructable> = {
-  header: Header,
-  paragraph: Paragraph,
+  // typography
+  header: {
+    class: Header,
+    inlineToolbar,
+  },
+  paragraph: {
+    class: Paragraph,
+    inlineToolbar,
+  },
+
+  // list
+  nestedlist: {
+    class: NestedList,
+    inlineToolbar,
+  },
+  checklist: {
+    class: CheckList,
+    inlineToolbar,
+  },
+
+  // special
   delimiter: Delimiter,
-  nestedlist: NestedList,
-  checklist: CheckList,
   table: Table,
   embed: Embed,
-  link: Link,
+  fancyLink: Link,
   code: Code,
+  strikethrough: StrikeThrough,
 
+  // inline
+  underline: Underline,
+  inlineCode: InlineCode,
+
+  // extra configs
   image: {
     class: Image,
     config: {
