@@ -32,19 +32,7 @@ export default async function HomePage() {
 
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {articles.map((article) => {
-              return (
-                <ArticlePreview
-                  key={article.id}
-                  id={article.id}
-                  title={article.title}
-                  description={article.description}
-                  cover={article.cover}
-                  author={{
-                    name: article.author.username,
-                    avatar: article.author.avatar,
-                  }}
-                />
-              );
+              return <ArticlePreview key={article.id} article={article} />;
             })}
           </div>
         </div>

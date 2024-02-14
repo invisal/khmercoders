@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { CompleteArticle } from "@/lib/query/article";
+
 import { Avatar, AvatarFallback } from "../ui/avatar";
 import {
   Card,
@@ -10,33 +12,26 @@ import {
 } from "../ui/card";
 
 export interface ArticlePreviewProps {
-  id: string;
-  title: string;
-  description: string | null;
-  cover: string | null;
-  author: {
-    name: string;
-    avatar: string | null;
-  };
+  article: CompleteArticle;
 }
 
-export default function ArticlePreview(props: ArticlePreviewProps) {
+export default function ArticlePreview({ article }: ArticlePreviewProps) {
   return (
-    <Link href={`/@${props.author.name}/${props.id}`}>
+    <Link href={`/@${article.author.name}/${article.id}`}>
       <Card>
         <CardHeader>
-          <CardTitle>{props.title}</CardTitle>
-          <CardDescription>{props.description}</CardDescription>
+          <CardTitle>{article.title}</CardTitle>
+          <CardDescription>{article.description}</CardDescription>
         </CardHeader>
         <CardFooter>
           <div className="flex gap-4">
             <Avatar>
               <AvatarFallback className="uppercase">
-                {props.author.name.slice(0, 2)}
+                {article.author?.name?.slice(0, 2)}
               </AvatarFallback>
             </Avatar>
             <div>
-              <div className="text-sm font-semibold">{props.author.name}</div>
+              <div className="text-sm font-semibold">{article.author.name}</div>
               <div className="text-xs">20 articles</div>
             </div>
           </div>

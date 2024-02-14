@@ -9,6 +9,14 @@ export default async function ArticlePage(props: ArticlePageProps) {
   const { slug } = props.params;
   const article = await getArticleById(slug);
 
+  if (!article) {
+    return (
+      <main className="p-8">
+        <div className="text-center">Article not found</div>
+      </main>
+    );
+  }
+
   return (
     <main className="p-8">
       <Article
