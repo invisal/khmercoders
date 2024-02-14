@@ -108,7 +108,7 @@ const LanguageSelect = ({ disabled, value, onChange }: LanguageSelectProps) => {
             className="w-fit justify-between text-sm"
           >
             {value
-              ? LANGUAGES.find(language => language.value === value)?.label
+              ? LANGUAGES.find((language) => language.value === value)?.label
               : "select language"}
             <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
           </Button>
@@ -118,11 +118,11 @@ const LanguageSelect = ({ disabled, value, onChange }: LanguageSelectProps) => {
             <CommandInput placeholder="Search framework..." />
             <CommandEmpty>No language found.</CommandEmpty>
             <CommandGroup>
-              {LANGUAGES.map(language => (
+              {LANGUAGES.map((language) => (
                 <CommandItem
                   key={language.value}
                   value={language.value}
-                  onSelect={currentValue => {
+                  onSelect={(currentValue) => {
                     onChange(currentValue === value ? "" : currentValue);
                     setOpen(false);
                   }}

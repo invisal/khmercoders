@@ -8,7 +8,7 @@ export type FileResponse = {
 export const Uploader = {
   uploadByFile: async (file: File): Promise<FileResponse> => {
     // faking the upload process for now 😂
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       const reader = new FileReader();
       reader.onload = function () {
         const url = URL.createObjectURL(file);
@@ -25,7 +25,7 @@ export const Uploader = {
 
   uploadByUrl: async (url: string): Promise<FileResponse> => {
     // faking the upload process for now 😂
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       resolve({
         success: 1,
         file: {

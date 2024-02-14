@@ -30,7 +30,7 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
   const { output } = useQuickContext<WritePageContext>();
 
   const title = useMemo(() => {
-    const maybeTitle = output.blocks.find(block => block.type === "header");
+    const maybeTitle = output.blocks.find((block) => block.type === "header");
     if (maybeTitle) {
       return convert(maybeTitle.data.text);
     }
@@ -38,7 +38,7 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
 
   const description = useMemo(() => {
     const maybeDescription = output.blocks.find(
-      block => block.type === "paragraph",
+      (block) => block.type === "paragraph",
     );
 
     if (maybeDescription) {
@@ -77,7 +77,7 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
       <DialogContent
         noOverlay
         className="border-0 shadow-none"
-        onPointerDownOutside={e => e.preventDefault()}
+        onPointerDownOutside={(e) => e.preventDefault()}
       >
         <DialogHeader>
           <DialogTitle>Polish Your Article</DialogTitle>

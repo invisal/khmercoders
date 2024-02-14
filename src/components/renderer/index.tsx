@@ -23,7 +23,7 @@ export const Article = ({
 
   return (
     <article className={className}>
-      {output.value.blocks.map(block => (
+      {output.value.blocks.map((block) => (
         <BlockRenderer key={block.id} {...block} />
       ))}
     </article>

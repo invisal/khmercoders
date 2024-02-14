@@ -14,7 +14,7 @@ import type Editorjs from "@editorjs/editorjs";
 import { useLocalStorage } from "@mantine/hooks";
 
 const Editor = dynamic(
-  () => import("@/components/editor").then(mod => mod.Editor),
+  () => import("@/components/editor").then((mod) => mod.Editor),
   { ssr: false },
 );
 
@@ -30,7 +30,7 @@ export default function WritePage() {
     defaultValue: DEFAULT_BLOCKS,
   });
 
-  const toggleIsSaving = () => setIsSaving(prev => !prev);
+  const toggleIsSaving = () => setIsSaving((prev) => !prev);
 
   const handleOnChange = useDebounceCallback(async (editor: Editorjs) => {
     toggleIsSaving();

@@ -22,7 +22,7 @@ const AuthForm = ({
       action={action}
       method="post"
       className="mt-4"
-      onSubmit={async e => {
+      onSubmit={async (e) => {
         e.preventDefault();
         setLoading(true);
         setErrors(null);

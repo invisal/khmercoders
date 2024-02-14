@@ -31,7 +31,7 @@ export default async function HomePage() {
           </div>
 
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {articles.map(article => {
+            {articles.map((article) => {
               return (
                 <ArticlePreview
                   key={article.id}

@@ -5,7 +5,7 @@ module.exports = {
   useTabs: false,
   singleQuote: false,
   jsxSingleQuote: false,
-  arrowParens: "avoid",
+  arrowParens: "always",
   trailingComma: "all",
   importOrder: [
     "^(react/(.*)$)|^(react$)",
