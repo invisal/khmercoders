@@ -73,7 +73,7 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
   return (
     <Dialog modal>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogOverlay className="bg-white" />
+      <DialogOverlay className="bg-background" />
       <DialogContent
         noOverlay
         className="border-0 shadow-none"
