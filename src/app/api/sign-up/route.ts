@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 import { auth } from "@/lib/auth/lucia";
+import { db } from "@/lib/db";
 
 import { LuciaError } from "lucia";
 
@@ -25,6 +26,17 @@ export const POST = async (request: NextRequest) => {
     password.length > 255
   ) {
     return NextResponse.json({ error: "Invalid password" }, { status: 400 });
+  }
+
+  const existingUser = await db.query.users.findFirst({
+    where: (field, op) => op.eq(field.username, username.toLowerCase()),
+  });
+
+  if (existingUser) {
+    return NextResponse.json(
+      { error: "Username already taken" },
+      { status: 400 },
+    );
   }
 
   try {
