@@ -15,6 +15,13 @@
       "when": 1708000933976,
       "tag": "0001_warm_human_cannonball",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708008932196,
+      "tag": "0002_conscious_bullseye",
+      "breakpoints": true
     }
   ]
 }

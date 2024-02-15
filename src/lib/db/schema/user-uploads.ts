@@ -17,6 +17,11 @@ export const userUploads = sqliteTable("user_uploads", {
   filename: text("filename").notNull(),
 
   /**
+   * The hashed filename
+   */
+  hashedFilename: text("hashed_filename").notNull(),
+
+  /**
    * The size of the file in bytes
    */
   size: integer("size").notNull(),
