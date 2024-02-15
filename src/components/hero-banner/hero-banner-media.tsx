@@ -4,8 +4,8 @@ import React from "react";
 
 import darkAnimationData from "./hero-media-dark.json";
 import lightAnimationData from "./hero-media-light.json";
+import Lottie from "lottie-react"; // Ensure correct import
 import { useTheme } from "next-themes";
-import Lottie from "react-lottie";
 
 export default function HeroBannerMedia() {
   const { theme, systemTheme } = useTheme();
@@ -15,18 +15,16 @@ export default function HeroBannerMedia() {
   const animationData =
     currentTheme === "dark" ? darkAnimationData : lightAnimationData;
 
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
-
+  // Directly pass props to Lottie component instead of using an options object
   return (
     <div>
-      <Lottie options={defaultOptions} width={320} height={320} />
+      <Lottie
+        animationData={animationData}
+        loop={true}
+        autoplay={true}
+        style={{ width: 320, height: 320 }}
+        rendererSettings={{ preserveAspectRatio: "xMidYMid slice" }}
+      />
     </div>
   );
 }
