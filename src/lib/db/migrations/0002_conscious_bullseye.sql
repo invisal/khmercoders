@@ -1,1 +1,0 @@
-ALTER TABLE user_uploads ADD `hashed_filename` text NOT NULL;

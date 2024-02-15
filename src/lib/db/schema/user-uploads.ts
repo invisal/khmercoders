@@ -1,35 +1,45 @@
 import { nanoid, timestamps } from "../../utils";
 import { users } from "./auth";
 import { relations, sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import {
+  integer,
+  primaryKey,
+  sqliteTable,
+  text,
+} from "drizzle-orm/sqlite-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const userUploads = sqliteTable("user_uploads", {
-  id: text("id")
-    .primaryKey()
-    .$defaultFn(() => nanoid()),
+export const userUploads = sqliteTable(
+  "user_uploads",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id),
 
-  userId: text("user_id")
-    .notNull()
-    .references(() => users.id),
+    filename: text("filename").notNull(),
 
-  filename: text("filename").notNull(),
+    /**
+     * The hashed filename
+     */
+    hashedFilename: text("hashed_filename").notNull(),
 
-  /**
-   * The hashed filename
-   */
-  hashedFilename: text("hashed_filename").notNull(),
+    /**
+     * The size of the file in bytes
+     */
+    size: integer("size").notNull(),
 
-  /**
-   * The size of the file in bytes
-   */
-  size: integer("size").notNull(),
-
-  createdAt: text("created_at")
-    .notNull()
-    .default(sql`CURRENT_TIMESTAMP`),
-});
+    createdAt: text("created_at")
+      .notNull()
+      .default(sql`CURRENT_TIMESTAMP`),
+  },
+  (table) => ({
+    pk: primaryKey({
+      name: "id",
+      columns: [table.userId, table.hashedFilename],
+    }),
+  }),
+);
 
 // RELATIONS
 export const userUploadsRelations = relations(userUploads, ({ one }) => ({

@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "a6809646-100b-4ee9-8ea2-fcacc165908e",
+  "id": "5ff28e25-21fc-49a6-9e9b-404abae1fc07",
   "prevId": "2f99c567-44dc-482a-979e-08a91f1839e5",
   "tables": {
     "articles": {
@@ -258,13 +258,6 @@
     "user_uploads": {
       "name": "user_uploads",
       "columns": {
-        "id": {
-          "name": "id",
-          "type": "text",
-          "primaryKey": true,
-          "notNull": true,
-          "autoincrement": false
-        },
         "user_id": {
           "name": "user_id",
           "type": "text",
@@ -274,6 +267,13 @@
         },
         "filename": {
           "name": "filename",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "hashed_filename": {
+          "name": "hashed_filename",
           "type": "text",
           "primaryKey": false,
           "notNull": true,
@@ -311,7 +311,15 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "id": {
+          "columns": [
+            "hashed_filename",
+            "user_id"
+          ],
+          "name": "id"
+        }
+      },
       "uniqueConstraints": {}
     }
   },

@@ -12,15 +12,8 @@
     {
       "idx": 1,
       "version": "5",
-      "when": 1708000933976,
-      "tag": "0001_warm_human_cannonball",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1708008932196,
-      "tag": "0002_conscious_bullseye",
+      "when": 1708020591313,
+      "tag": "0001_clear_longshot",
       "breakpoints": true
     }
   ]
