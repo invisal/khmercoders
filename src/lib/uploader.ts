@@ -7,31 +7,40 @@ export type FileResponse = {
 
 export const Uploader = {
   uploadByFile: async (file: File): Promise<FileResponse> => {
-    // faking the upload process for now 😂
-    return new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = function () {
-        const url = URL.createObjectURL(file);
-        resolve({
-          success: 1,
-          file: {
-            url,
-          },
-        });
-      };
-      reader.readAsDataURL(file);
+    const formData = new FormData();
+    formData.append("file", file);
+
+    const response = await fetch("/api/upload/file", {
+      method: "POST",
+      body: formData,
     });
+
+    const data = await response.json();
+    console.log("uploadByFile", data);
+    const url = data.url;
+
+    return {
+      success: 1,
+      file: {
+        url,
+      },
+    };
   },
 
-  uploadByUrl: async (url: string): Promise<FileResponse> => {
-    // faking the upload process for now 😂
-    return new Promise((resolve) => {
-      resolve({
-        success: 1,
-        file: {
-          url,
-        },
-      });
+  uploadByUrl: async (remoteUrl: string): Promise<FileResponse> => {
+    const response = await fetch("/api/upload/url", {
+      method: "POST",
+      body: JSON.stringify({ url: remoteUrl }),
     });
+    const data = await response.json();
+    console.log("uploadByUrl", data);
+    const url = data.url;
+
+    return {
+      success: 1,
+      file: {
+        url,
+      },
+    };
   },
 };
