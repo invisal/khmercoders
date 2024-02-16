@@ -1,4 +1,5 @@
 import { articles } from "./articles";
+import { userUploads } from "./user-uploads";
 import { relations, sql } from "drizzle-orm";
 import { blob, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
@@ -42,4 +43,5 @@ export const keys = sqliteTable("user_key", {
 
 export const usersRelations = relations(users, ({ many }) => ({
   articles: many(articles),
+  uploads: many(userUploads),
 }));

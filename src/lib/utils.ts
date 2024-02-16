@@ -1,3 +1,4 @@
+import { env } from "./env.mjs";
 import { clsx, type ClassValue } from "clsx";
 import { customAlphabet } from "nanoid";
 import { twMerge } from "tailwind-merge";
@@ -19,3 +20,26 @@ export type OptimisticAction<T> = {
   action: Action;
   data: T;
 };
+
+/**
+ * Join everything together into a string
+ *
+ * @example
+ * const result = concat("henlo", "-", "world")
+ * // "henlo-world"
+ */
+export function concat(...inputs: string[]) {
+  return inputs.join("");
+}
+
+/**
+ * Get the file url from the filename
+ * @example
+ * const url = getFileUrl("filename.jpg")
+ * // "https://r2.example.com/filename.jpg"
+ * // make sure to set the R2_PUBLIC_URL in the .env
+ */
+export function getFileUrl(filename: string) {
+  const url = new URL(filename, env.R2_PUBLIC_URL);
+  return url.toString();
+}

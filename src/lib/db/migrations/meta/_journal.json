@@ -8,6 +8,13 @@
       "when": 1707848130100,
       "tag": "0000_pink_taskmaster",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708020591313,
+      "tag": "0001_clear_longshot",
+      "breakpoints": true
     }
   ]
 }

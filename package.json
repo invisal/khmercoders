@@ -25,6 +25,7 @@
     "pre-push": "pnpm run quality-check"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.514.0",
     "@editorjs/checklist": "^1.6.0",
     "@editorjs/code": "^2.9.0",
     "@editorjs/delimiter": "^1.4.0",
