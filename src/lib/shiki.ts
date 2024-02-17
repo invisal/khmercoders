@@ -2,7 +2,7 @@ import { getHighlighter } from "shiki";
 
 export const code = async (code: string, language: string, theme: string) => {
   const highlighter = await getHighlighter({
-    themes: ["dracula", "nord", "tokyo-night"],
+    themes: ["dracula"],
     langs: [
       "javascript",
       "typescript",
