@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { cn } from "@/lib/utils";
 
-import khmercoder from "./khmercoder.svg";
+import khmercoder from "public/khmercoder.svg";
 
 interface LogoProps extends React.HTMLAttributes<HTMLSpanElement> {
   iconSize?: number;
