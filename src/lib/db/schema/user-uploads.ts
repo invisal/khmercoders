@@ -1,4 +1,4 @@
-import { nanoid, timestamps } from "../../utils";
+import { timestamps } from "../../utils";
 import { users } from "./auth";
 import { relations, sql } from "drizzle-orm";
 import {
@@ -20,9 +20,9 @@ export const userUploads = sqliteTable(
     filename: text("filename").notNull(),
 
     /**
-     * The hashed filename
+     * The hashed file content
      */
-    hashedFilename: text("hashed_filename").notNull(),
+    hash: text("hash").notNull(),
 
     /**
      * The size of the file in bytes
@@ -36,7 +36,7 @@ export const userUploads = sqliteTable(
   (table) => ({
     pk: primaryKey({
       name: "id",
-      columns: [table.userId, table.hashedFilename],
+      columns: [table.userId, table.hash],
     }),
   }),
 );
