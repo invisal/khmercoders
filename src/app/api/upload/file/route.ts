@@ -34,12 +34,14 @@ export const POST = async (request: NextRequest) => {
   const size = file.size;
   const fileType = file.type;
   const fileExtenstion = file.type.split("/")[1] || "";
-  const hashedFilename = concat(md5(file.name), ".", fileExtenstion);
 
   // we can do compression or resizing here and return a new buffer
   const buffer = Buffer.from(await file.arrayBuffer());
 
-  const url = await R2.upload(buffer, hashedFilename, fileType)
+  // hash the content and append the file extension
+  const hashedContent = concat(md5(buffer), ".", fileExtenstion);
+
+  const url = await R2.upload(buffer, hashedContent, fileType)
     .then(ok)
     .catch(err);
 
@@ -49,7 +51,7 @@ export const POST = async (request: NextRequest) => {
 
   const userUploadParams = insertUserUploadSchema.safeParse({
     userId: session.user.id,
-    hashedFilename: hashedFilename,
+    hash: hashedContent,
     filename: file.name,
     size,
   } satisfies NewUserUpload);
