@@ -2,11 +2,11 @@ import Link from "next/link";
 
 import { AuthSession } from "@/lib/auth/utils";
 
+import { Logo } from "../logo";
 import { ThemeToggle } from "../theme/toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { Logo } from "./logo";
 import { ProfileDropdown } from "./profile-dropdown";
 import { IconEdit } from "@tabler/icons-react";
 import { LucideMenu } from "lucide-react";
@@ -27,7 +27,7 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
   return (
     <nav className="flex items-center justify-between gap-x-5 border-b px-5">
       <div className="flex items-center">
-        <Logo />
+        <Logo width={70} height={70} />
       </div>
 
       <div className="hidden gap-4 lg:flex">

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Logo } from "@/components/navbar/logo";
+import { Logo } from "@/components/logo";
 import { ProfileDropdown } from "@/components/navbar/profile-dropdown";
 
 import { WritePageContext } from "../page";

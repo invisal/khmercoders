@@ -4,10 +4,16 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface LogoProps extends React.HTMLAttributes<HTMLSpanElement> {
-  iconSize?: number;
+  width?: number;
+  height?: number;
 }
 
-export const Logo = ({ className, ...props }: LogoProps) => {
+export const Logo = ({
+  className,
+  width = 70,
+  height = 70,
+  ...props
+}: LogoProps) => {
   return (
     <span
       className={cn("text-primary flex items-center justify-center", className)}
@@ -17,8 +23,8 @@ export const Logo = ({ className, ...props }: LogoProps) => {
         <Image
           src="/khmercoder.svg"
           alt="KhmercoderLogo"
-          width={70}
-          height={70}
+          width={width}
+          height={height}
         />
       </Link>
     </span>
