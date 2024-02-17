@@ -4,7 +4,10 @@ import "./src/lib/env.mjs";
 const nextConfig = {
   reactStrictMode: false,
   images: {
-    remotePatterns: [{ hostname: "avatars.githubusercontent.com" }],
+    remotePatterns: [
+      { hostname: "avatars.githubusercontent.com" },
+      { hostname: "r2.khmer.codes" },
+    ],
   },
 };
 
