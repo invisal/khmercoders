@@ -4,14 +4,23 @@ import { AuthSession } from "@/lib/auth/utils";
 
 import { Logo } from "../logo";
 import { ThemeToggle } from "../theme/toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
+import { Separator } from "../ui/separator";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { ProfileDropdown } from "./profile-dropdown";
-import { SearchInput } from "./search-input";
 import { IconEdit } from "@tabler/icons-react";
+import { LucideMenu } from "lucide-react";
 
 interface NavBarProps {
   session: AuthSession;
 }
+
+const MENU = [
+  { text: "Blogs", link: "/blogs" },
+  { text: "Events", link: "/events" },
+  { text: "About", link: "/about" },
+];
 
 export const Navbar = ({ session }: Readonly<NavBarProps>) => {
   const isLogin = !!session.session;
@@ -20,11 +29,19 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
     <nav className="flex items-center justify-between gap-x-5 border-b px-5 py-2">
       <div className="flex items-center gap-3">
         <Logo />
-
-        <SearchInput />
       </div>
 
-      <div className="ml-auto mr-5">
+      <div className="hidden gap-4 lg:flex">
+        {MENU.map((menuItem) => (
+          <Link href={menuItem.link} key={menuItem.text}>
+            {menuItem.text}
+          </Link>
+        ))}
+      </div>
+
+      <div className="grow" />
+
+      <div>
         <ThemeToggle />
       </div>
 
@@ -35,11 +52,11 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
       )}
 
       {isLogin && (
-        <ul className="flex items-center gap-x-5">
+        <ul className="hidden items-center gap-x-5 lg:flex">
           <li>
             <Link
               href="/write"
-              className="text-muted-foreground hover:text-foreground flex items-center gap-x-2 text-sm font-medium"
+              className="flex items-center gap-x-2 text-sm font-medium text-muted-foreground hover:text-foreground"
             >
               <IconEdit size={18} />
               <span>Write</span>
@@ -51,6 +68,34 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
           </li>
         </ul>
       )}
+
+      <Sheet>
+        <SheetTrigger>
+          <LucideMenu className="lg:hidden" />
+        </SheetTrigger>
+        <SheetContent>
+          <Avatar className="mb-8 size-9 border hover:brightness-95">
+            <AvatarFallback>JD</AvatarFallback>
+            <AvatarImage
+              alt="profile"
+              sizes="40px"
+              src="https://avatars.githubusercontent.com/u/20983608?v=4"
+            />
+          </Avatar>
+
+          <div className="flex flex-col gap-2">
+            {MENU.map((menuItem) => (
+              <Link
+                href={menuItem.link}
+                key={menuItem.text}
+                className="px-2 py-1"
+              >
+                {menuItem.text}
+              </Link>
+            ))}
+          </div>
+        </SheetContent>
+      </Sheet>
     </nav>
   );
 };
