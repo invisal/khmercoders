@@ -1,20 +1,17 @@
-"use client";
+import { code } from "@/lib/shiki";
 
 import { OutputBlockData } from "@editorjs/editorjs";
-import { codeToHtml } from "shiki";
 
 export const CodeBlock = async (data: OutputBlockData) => {
-  const html = await codeToHtml(data.data.content, {
-    lang: data.data.language || "plaintext",
-    themes: {
-      light: "min-light",
-      dark: "min-dark",
-    },
-  });
-
+  const rendercode = await code(
+    data.data.content,
+    data.data.language || "plaintext",
+    "dracula",
+  );
   return (
     <div>
-      <div dangerouslySetInnerHTML={{ __html: html }} />
+      {data.data.language}
+      <div dangerouslySetInnerHTML={{ __html: rendercode }} />
     </div>
   );
 };
