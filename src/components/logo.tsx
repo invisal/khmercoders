@@ -1,21 +1,32 @@
+import Image from "next/image";
+import Link from "next/link";
+
 import { cn } from "@/lib/utils";
 
-import { IconAsterisk } from "@tabler/icons-react";
-
 interface LogoProps extends React.HTMLAttributes<HTMLSpanElement> {
-  iconSize?: number;
+  width?: number;
+  height?: number;
 }
 
-export const Logo = ({ iconSize, className, ...props }: LogoProps) => {
+export const Logo = ({
+  className,
+  width = 70,
+  height = 70,
+  ...props
+}: LogoProps) => {
   return (
     <span
-      className={cn(
-        "bg-secondary text-primary flex size-10 items-center justify-center rounded-xl border",
-        className,
-      )}
+      className={cn("text-primary flex items-center justify-center", className)}
       {...props}
     >
-      <IconAsterisk size={iconSize || 24} />
+      <Link href="/">
+        <Image
+          src="/khmercoder.svg"
+          alt="KhmercoderLogo"
+          width={width}
+          height={height}
+        />
+      </Link>
     </span>
   );
 };
