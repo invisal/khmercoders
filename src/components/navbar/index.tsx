@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { AuthSession } from "@/lib/auth/utils";
@@ -7,7 +6,6 @@ import { ThemeToggle } from "../theme/toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import khmercoder from "./khmercoder.svg";
 import { Logo } from "./logo";
 import { ProfileDropdown } from "./profile-dropdown";
 import { IconEdit } from "@tabler/icons-react";
