@@ -1,13 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { AuthSession } from "@/lib/auth/utils";
 
-import { Logo } from "../logo";
 import { ThemeToggle } from "../theme/toggle";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
-import { Separator } from "../ui/separator";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import khmercoder from "./khmercoder.svg";
+import { Logo } from "./logo";
 import { ProfileDropdown } from "./profile-dropdown";
 import { IconEdit } from "@tabler/icons-react";
 import { LucideMenu } from "lucide-react";
@@ -26,8 +27,8 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
   const isLogin = !!session.session;
 
   return (
-    <nav className="flex items-center justify-between gap-x-5 border-b px-5 py-2">
-      <div className="flex items-center gap-3">
+    <nav className="flex items-center justify-between gap-x-5 border-b px-5">
+      <div className="flex items-center">
         <Logo />
       </div>
 
