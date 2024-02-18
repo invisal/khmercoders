@@ -1,8 +1,8 @@
 import { getHighlighter } from "shiki";
 
-export const code = async (code: string, language: string, theme: string) => {
+export const code = async (code: string, language: string) => {
   const highlighter = await getHighlighter({
-    themes: ["dracula"],
+    themes: ["dracula", "github-light"],
     langs: [
       "javascript",
       "typescript",
@@ -15,6 +15,9 @@ export const code = async (code: string, language: string, theme: string) => {
   });
   return highlighter.codeToHtml(code, {
     lang: language,
-    theme,
+    themes: {
+      dark: "dracula",
+      light: "github-light",
+    },
   });
 };
