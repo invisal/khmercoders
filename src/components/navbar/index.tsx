@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { MENU } from "@/config/menu";
 import { AuthSession } from "@/lib/auth/utils";
 
 import { Logo } from "../logo";
@@ -14,12 +15,6 @@ import { LucideMenu } from "lucide-react";
 interface NavBarProps {
   session: AuthSession;
 }
-
-const MENU = [
-  { text: "Blogs", link: "/blogs" },
-  { text: "Events", link: "/events" },
-  { text: "About", link: "/about" },
-];
 
 export const Navbar = ({ session }: Readonly<NavBarProps>) => {
   const isLogin = !!session.session;
