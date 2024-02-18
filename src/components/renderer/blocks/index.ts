@@ -1,3 +1,4 @@
+
 import { CodeBlock } from "./code";
 import { DefaultBlock } from "./default";
 import { HeaderBlock } from "./header";
@@ -7,7 +8,7 @@ import { ParagraphBlock } from "./paragraph";
 export const BLOCKS = {
   default: DefaultBlock,
 
-  // typography
+  
   code: CodeBlock,
   image: ImageBlock,
   header: HeaderBlock,

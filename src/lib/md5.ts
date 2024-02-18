@@ -5,6 +5,6 @@ import crypto from "crypto";
  * @param input - string to hash
  * @returns md5 hashed string
  */
-export const md5 = (input: string) => {
+export const md5 = (input: crypto.BinaryLike) => {
   return crypto.createHash("md5").update(input).digest("hex");
 };
