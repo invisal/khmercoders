@@ -2,6 +2,7 @@
 
 import React, { Fragment, useState } from "react";
 
+import { ALLOW_LANG } from "@/config/allow-lang";
 import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
@@ -54,11 +55,10 @@ export const CodeEditor = ({
       <Editor
         padding={18}
         minHeight={300}
-        data-color-mode="light"
         language={language}
         defaultValue={value || DEFAULT.value}
         className={cn(
-          "!bg-accent size-full flex-1 rounded-xl border !font-mono *:!text-base",
+          "!bg-accent not-prose !text-foreground size-full flex-1 rounded-xl border !font-mono *:!text-base",
           className,
         )}
         disabled={disabled}
@@ -67,17 +67,6 @@ export const CodeEditor = ({
     </div>
   );
 };
-
-const LANGUAGES = [
-  { label: "Typescript", value: "typescript" },
-  { label: "Javascript", value: "javascript" },
-  { label: "Python", value: "pythong" },
-  { label: "HTML", value: "html" },
-  { label: "CSS", value: "css" },
-  { label: "JSON", value: "json" },
-  { label: "YAML", value: "yaml" },
-  { label: "Markdown", value: "markdown" },
-];
 
 interface LanguageSelectProps {
   value: string;
@@ -108,7 +97,7 @@ const LanguageSelect = ({ disabled, value, onChange }: LanguageSelectProps) => {
             className="w-fit justify-between text-sm"
           >
             {value
-              ? LANGUAGES.find((language) => language.value === value)?.label
+              ? ALLOW_LANG.find((language) => language === value)
               : "select language"}
             <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
           </Button>
@@ -117,11 +106,11 @@ const LanguageSelect = ({ disabled, value, onChange }: LanguageSelectProps) => {
           <Command>
             <CommandInput placeholder="Search framework..." />
             <CommandEmpty>No language found.</CommandEmpty>
-            <CommandGroup>
-              {LANGUAGES.map((language) => (
+            <CommandGroup className="max-h-[30vh] overflow-y-auto">
+              {ALLOW_LANG.map((language) => (
                 <CommandItem
-                  key={language.value}
-                  value={language.value}
+                  key={language}
+                  value={language}
                   onSelect={(currentValue) => {
                     onChange(currentValue === value ? "" : currentValue);
                     setOpen(false);
@@ -130,10 +119,10 @@ const LanguageSelect = ({ disabled, value, onChange }: LanguageSelectProps) => {
                   <Check
                     className={cn(
                       "mr-2 size-4",
-                      value === language.value ? "opacity-100" : "opacity-0",
+                      value === language ? "opacity-100" : "opacity-0",
                     )}
                   />
-                  {language.label}
+                  {language}
                 </CommandItem>
               ))}
             </CommandGroup>

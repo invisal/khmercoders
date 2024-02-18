@@ -1,17 +1,11 @@
+import { ALLOW_LANG } from "@/config/allow-lang";
+
 import { getHighlighter } from "shiki";
 
 export const code = async (code: string, language: string) => {
   const highlighter = await getHighlighter({
     themes: ["dracula", "github-light"],
-    langs: [
-      "javascript",
-      "typescript",
-      "html",
-      "css",
-      "json",
-      "markdown",
-      "plaintext",
-    ],
+    langs: ALLOW_LANG,
   });
   return highlighter.codeToHtml(code, {
     lang: language,
