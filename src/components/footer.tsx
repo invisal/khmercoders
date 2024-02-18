@@ -9,7 +9,7 @@ export default function Footer() {
     <div>
       <Separator />
 
-      <div className="container mx-auto py-2 mt-2">
+      <div className="container mx-auto mt-2 py-2">
         <ul className="flex gap-4">
           {MENU.map((menuItem) => (
             <li key={menuItem.text} className="font-semibold">

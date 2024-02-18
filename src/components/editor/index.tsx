@@ -10,6 +10,7 @@ import Editorjs, { OutputData } from "@editorjs/editorjs";
 import DragDrop from "editorjs-drag-drop";
 // @ts-expect-error - no types
 import Undo from "editorjs-undo";
+import { useTheme } from "next-themes";
 
 export const EDITOR_ID = "@editorjs";
 
@@ -21,6 +22,7 @@ export interface EditorProps {
 }
 
 export const Editor = ({ onChange, ...editorProps }: EditorProps) => {
+  const { theme } = useTheme();
   const editor = useRef<Editorjs | null>(null);
 
   const handleOnReady = useCallback(() => {
@@ -55,6 +57,10 @@ export const Editor = ({ onChange, ...editorProps }: EditorProps) => {
   }, []);
 
   return (
-    <div id={EDITOR_ID} className="prose dark:prose-invert prose-orange" />
+    <div
+      id={EDITOR_ID}
+      className="prose prose-orange dark:prose-invert"
+      data-color-mode={theme}
+    />
   );
 };

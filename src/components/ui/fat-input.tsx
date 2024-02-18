@@ -18,7 +18,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={cn(
-          "bg-accent ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring h-hit flex w-full rounded-md px-3 pb-2 pt-8 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "h-hit flex w-full rounded-md bg-accent px-3 pb-2 pt-8 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
         ref={ref}
@@ -35,7 +35,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <textarea
         className={cn(
-          "bg-secondary ring-offset-background placeholder:text-muted-foreground focus-visible:ring-ring flex min-h-[80px] w-full rounded-md px-3 pb-2 pt-8 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          "flex min-h-[80px] w-full rounded-md bg-secondary px-3 pb-2 pt-8 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
         ref={ref}
@@ -54,7 +54,7 @@ const Label = ({
   return (
     <BaseLabel
       className={cn(
-        "text-muted-foreground absolute left-3 top-2 text-sm font-normal",
+        "absolute left-3 top-2 text-sm font-normal text-muted-foreground",
         className,
       )}
       {...props}

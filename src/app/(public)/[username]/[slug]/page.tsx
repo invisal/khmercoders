@@ -21,7 +21,7 @@ export default async function ArticlePage(props: ArticlePageProps) {
     <main className="p-8">
       <Article
         content={article.content}
-        className="prose dark:prose-invert prose-orange mx-auto"
+        className="prose prose-orange mx-auto dark:prose-invert"
       />
     </main>
   );
