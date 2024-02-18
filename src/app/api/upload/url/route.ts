@@ -37,9 +37,9 @@ export const POST = async (request: NextRequest) => {
   // we can do compression or resizing here and return a new buffer
   const buffer = Buffer.from(await blob.arrayBuffer());
 
-  const hashedContent = concat(md5(buffer), ".", fileExtenstion);
+  const hashedFilename = concat(md5(buffer), ".", fileExtenstion);
 
-  const url = await R2.upload(buffer, hashedContent, fileType)
+  const url = await R2.upload(buffer, hashedFilename, fileType)
     .then(ok)
     .catch(err);
 
@@ -49,7 +49,7 @@ export const POST = async (request: NextRequest) => {
 
   const userUploadParams = insertUserUploadSchema.safeParse({
     userId: session.user.id,
-    hash: hashedContent,
+    hashedFilename: hashedFilename,
     filename: filename,
     size,
   } satisfies NewUserUpload);

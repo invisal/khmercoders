@@ -39,9 +39,9 @@ export const POST = async (request: NextRequest) => {
   const buffer = Buffer.from(await file.arrayBuffer());
 
   // hash the content and append the file extension
-  const hashedContent = concat(md5(buffer), ".", fileExtenstion);
+  const hashedFilename = concat(md5(buffer), ".", fileExtenstion);
 
-  const url = await R2.upload(buffer, hashedContent, fileType)
+  const url = await R2.upload(buffer, hashedFilename, fileType)
     .then(ok)
     .catch(err);
 
@@ -51,7 +51,7 @@ export const POST = async (request: NextRequest) => {
 
   const userUploadParams = insertUserUploadSchema.safeParse({
     userId: session.user.id,
-    hash: hashedContent,
+    hashedFilename: hashedFilename,
     filename: file.name,
     size,
   } satisfies NewUserUpload);

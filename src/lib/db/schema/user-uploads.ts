@@ -20,9 +20,9 @@ export const userUploads = sqliteTable(
     filename: text("filename").notNull(),
 
     /**
-     * The hashed file content
+     * The hashed filename
      */
-    hash: text("hash").notNull(),
+    hashedFilename: text("hashed_filename").notNull(),
 
     /**
      * The size of the file in bytes
@@ -36,7 +36,7 @@ export const userUploads = sqliteTable(
   (table) => ({
     pk: primaryKey({
       name: "id",
-      columns: [table.userId, table.hash],
+      columns: [table.userId, table.hashedFilename],
     }),
   }),
 );
