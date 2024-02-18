@@ -1,4 +1,4 @@
-import { nanoid, timestamps } from "../../utils";
+import { timestamps } from "../../utils";
 import { users } from "./auth";
 import { relations, sql } from "drizzle-orm";
 import {

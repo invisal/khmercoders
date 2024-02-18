@@ -33,10 +33,11 @@ export const POST = async (request: NextRequest) => {
   const fileType = blob.type;
   const fileExtenstion = fileType.split("/").pop() || "";
   const size = blob.size;
-  const hashedFilename = concat(md5(filename), ".", fileExtenstion);
 
   // we can do compression or resizing here and return a new buffer
   const buffer = Buffer.from(await blob.arrayBuffer());
+
+  const hashedFilename = concat(md5(buffer), ".", fileExtenstion);
 
   const url = await R2.upload(buffer, hashedFilename, fileType)
     .then(ok)
