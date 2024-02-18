@@ -2,6 +2,7 @@ import { getUserAuth } from "@/lib/auth/utils";
 import { getAllArticles } from "@/lib/query/article";
 
 import ArticlePreview from "@/components/articles/article-preview";
+import Footer from "@/components/footer";
 import HeroBanner from "@/components/hero-banner";
 import { Navbar } from "@/components/navbar";
 import ProfilePreview from "@/components/profile-preview";
@@ -16,6 +17,7 @@ export default async function HomePage() {
   return (
     <div>
       <Navbar session={session} />
+
       <main className="container mx-auto">
         <HeroBanner />
 
@@ -37,6 +39,8 @@ export default async function HomePage() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }
