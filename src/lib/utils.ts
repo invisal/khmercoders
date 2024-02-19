@@ -57,3 +57,7 @@ export function slugify(input: string) {
     strict: true,
   });
 }
+
+export function getIdFromSlug(slug: string) {
+  return slug.split("-").pop() || "";
+}

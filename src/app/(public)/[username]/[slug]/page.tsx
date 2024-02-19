@@ -1,14 +1,19 @@
 import { getArticleById } from "@/lib/query/article";
+import { getIdFromSlug } from "@/lib/utils";
 
 import { Article } from "@/components/renderer";
 
 interface ArticlePageProps {
   params: { username: string; slug: string };
 }
+
 export default async function ArticlePage(props: ArticlePageProps) {
   const { slug } = props.params;
-  const article = await getArticleById(slug);
+  const articleId = getIdFromSlug(slug);
 
+  const article = await getArticleById(articleId);
+
+  // TODO: Handle not found with a custom not found page
   if (!article) {
     return (
       <main className="p-8">
