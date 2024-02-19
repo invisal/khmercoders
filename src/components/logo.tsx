@@ -16,7 +16,7 @@ export const Logo = ({
 }: LogoProps) => {
   return (
     <span
-      className={cn("text-primary flex items-center justify-center", className)}
+      className={cn("flex items-center justify-center text-primary", className)}
       {...props}
     >
       <Link href="/">

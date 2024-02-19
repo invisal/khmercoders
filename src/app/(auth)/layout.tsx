@@ -11,5 +11,5 @@ export default async function AuthLayout({
   console.log(session);
   if (session?.session) redirect("/");
 
-  return <div className="bg-muted h-screen pt-8">{children}</div>;
+  return <div className="h-screen bg-muted pt-8">{children}</div>;
 }

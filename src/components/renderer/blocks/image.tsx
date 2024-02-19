@@ -10,8 +10,8 @@ export const ImageBlock = (data: OutputBlockData) => {
       <div
         className={cn(
           "relative",
-          data.data.withBorder && "border rounded-lg p-4",
-          data.data.withBackground && "bg-secondary rounded-lg",
+          data.data.withBorder && "rounded-lg border p-4",
+          data.data.withBackground && "rounded-lg bg-secondary",
           data.data.stretched && "mx-[-15vw]",
         )}
       >
@@ -24,7 +24,7 @@ export const ImageBlock = (data: OutputBlockData) => {
           className="size-full"
         />
       </div>
-      <p className="font-extralight text-sm mb-10">{data.data.caption}</p>
+      <p className="mb-10 text-sm font-extralight">{data.data.caption}</p>
     </div>
   );
 };

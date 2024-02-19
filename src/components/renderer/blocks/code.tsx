@@ -12,7 +12,7 @@ export const CodeBlock = async (data: OutputBlockData) => {
       <div className="relative">
         <CopyButton
           value={data.data.content}
-          className="absolute top-2 right-2"
+          className="absolute right-2 top-2"
         />
       </div>
       <div dangerouslySetInnerHTML={{ __html: rendercode }} />

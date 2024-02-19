@@ -6,7 +6,7 @@ import AuthForm from "@/components/auth/form";
 
 const Page = async () => {
   return (
-    <main className="bg-popover mx-auto my-4 max-w-lg p-10">
+    <main className="mx-auto my-4 max-w-lg bg-popover p-10">
       <h1 className="text-center text-2xl font-bold">
         Sign in to your account
       </h1>
@@ -22,11 +22,11 @@ const Page = async () => {
         <Input type="password" name="password" id="password" />
         <br />
       </AuthForm>
-      <div className="text-muted-foreground mt-4 text-center text-sm">
+      <div className="mt-4 text-center text-sm text-muted-foreground">
         Don&apos;t have an account yet?{" "}
         <Link
           href="/sign-up"
-          className="text-accent-foreground hover:text-primary underline"
+          className="text-accent-foreground underline hover:text-primary"
         >
           Create an account
         </Link>

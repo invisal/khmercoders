@@ -58,7 +58,7 @@ export const CodeEditor = ({
         language={language}
         defaultValue={value || DEFAULT.value}
         className={cn(
-          "!bg-accent not-prose !text-foreground size-full flex-1 rounded-xl border !font-mono *:!text-base",
+          "size-full flex-1 rounded-xl border !bg-accent !font-mono *:!text-base",
           className,
         )}
         disabled={disabled}
