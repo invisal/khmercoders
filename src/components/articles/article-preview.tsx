@@ -17,7 +17,7 @@ export interface ArticlePreviewProps {
 
 export default function ArticlePreview({ article }: ArticlePreviewProps) {
   return (
-    <Link href={`/@${article.author.name}/${article.id}`}>
+    <Link href={`/@${article.author.username}/${article.id}`}>
       <Card>
         <CardHeader>
           <CardTitle>{article.title}</CardTitle>
