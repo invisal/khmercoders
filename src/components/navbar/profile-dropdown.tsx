@@ -44,7 +44,7 @@ export const ProfileDropdown = () => {
 
         <DropdownMenuContent
           align="end"
-          className="text-muted-foreground min-w-44"
+          className="min-w-44 text-muted-foreground"
         >
           <DropdownMenuItem asChild>
             <Link href="/profile" className="flex cursor-pointer gap-x-2">
@@ -60,7 +60,7 @@ export const ProfileDropdown = () => {
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={handleSignout}
-            className="hover:!text-destructive focus:!text-destructive flex cursor-pointer gap-x-2"
+            className="flex cursor-pointer gap-x-2 hover:!text-destructive focus:!text-destructive"
           >
             <IconLogout size={16} />
             <span>Signout</span>

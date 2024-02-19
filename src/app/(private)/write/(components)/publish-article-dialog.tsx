@@ -89,7 +89,7 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
         <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="space-y-1">
             <Label>Preview</Label>
-            <div className="bg-secondary flex aspect-video items-center justify-center rounded-md">
+            <div className="flex aspect-video items-center justify-center rounded-md bg-secondary">
               <span className="text-muted-foreground">
                 Havent implement file upload yet, jam tich.
               </span>

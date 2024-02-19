@@ -14,7 +14,7 @@ export const SearchInput = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="bg-secondary text-muted-foreground h-10 rounded-full border-none pl-10 pr-4 text-sm focus-visible:outline-none"
+          className="h-10 rounded-full border-none bg-secondary pl-10 pr-4 text-sm text-muted-foreground focus-visible:outline-none"
         />
       </div>
     </Fragment>
