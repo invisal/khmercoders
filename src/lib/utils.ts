@@ -1,6 +1,7 @@
 import { env } from "./env.mjs";
 import { clsx, type ClassValue } from "clsx";
 import { customAlphabet } from "nanoid";
+import baseSlugify from "slugify";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -42,4 +43,17 @@ export function concat(...inputs: string[]) {
 export function getFileUrl(filename: string) {
   const url = new URL(filename, env.R2_PUBLIC_URL);
   return url.toString();
+}
+
+/**
+ * Slugify a string to make it URL friendly
+ * @example
+ * const slug = slugify("He_llo \@Worl/d")
+ * // "hello-world"
+ */
+export function slugify(input: string) {
+  return baseSlugify(input, {
+    lower: true,
+    strict: true,
+  });
 }
