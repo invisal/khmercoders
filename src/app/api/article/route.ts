@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import { getUserAuth } from "@/lib/auth/utils";
 import { db } from "@/lib/db";
 import { articles, insertArticleSchema } from "@/lib/db/schema/articles";
+import { getArticlesByUsername } from "@/lib/query/article";
 
 import { err, isErr, ok } from "@justmiracle/result";
 
@@ -38,3 +39,30 @@ export const POST = async (request: NextRequest) => {
 
   return new Response(JSON.stringify(article.value[0]), { status: 201 });
 };
+
+export async function GET(req: NextRequest) {
+  const searchParams = req.nextUrl.searchParams;
+  const username = searchParams.get("username");
+  const limit = parseInt(searchParams.get("limit") || "10", 10);
+  const offset = parseInt(searchParams.get("offset") || "0", 10);
+
+  if (!username) {
+    return new Response(JSON.stringify({ error: "Username is required" }), {
+      status: 400,
+    });
+  }
+
+  const result = await getArticlesByUsername(username, limit, offset)
+    .then((articles) => ok(articles))
+    .catch((error) => err(error));
+
+  if (isErr(result)) {
+    return new Response(JSON.stringify({ error: "Failed to fetch articles" }), {
+      status: 500,
+    });
+  }
+  return new Response(JSON.stringify(result.value), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
+}

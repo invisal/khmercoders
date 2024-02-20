@@ -1,52 +1,21 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 import { getArticlesByUsername } from "@/lib/query/article";
 import { getUserByUsername } from "@/lib/query/user";
 
 import { ArticleCard } from "@/components/articles/article-card";
+import LoadMoreArticles from "@/components/articles/load-more-button";
 import { UserProfile } from "@/components/user-info/user-profile";
 
 interface UserProfilePageProps {
   params: { username: string };
 }
 
-const UserProfilePage: React.FC<UserProfilePageProps> = (props) => {
-  const { username } = props.params;
+export default async function UserProfilePage(prop: UserProfilePageProps) {
+  let { username } = prop.params;
 
   const decodedUserName = decodeURIComponent(username);
   const usernameWithoutAt = decodedUserName.slice(1);
 
-  const [user, setUser] = useState<any>(null);
-  const [articles, setArticles] = useState<any[]>([]);
-  const [offset, setOffset] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
-
-  const loadUser = async () => {
-    const user = await getUserByUsername(usernameWithoutAt);
-    setUser(user);
-  };
-  const loadArticles = async () => {
-    const newArticles = await getArticlesByUsername(
-      usernameWithoutAt,
-      10,
-      offset,
-    );
-
-    if (!newArticles) {
-      return setHasMore(false);
-    }
-    setArticles((prevArticles) => [...prevArticles, ...newArticles]);
-    setOffset((prevOffset) => prevOffset + newArticles.length);
-    setHasMore(newArticles.length === 10);
-  };
-
-  useEffect(() => {
-    loadUser();
-    loadArticles();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const user = await getUserByUsername(usernameWithoutAt);
 
   if (!user) {
     return (
@@ -56,23 +25,19 @@ const UserProfilePage: React.FC<UserProfilePageProps> = (props) => {
     );
   }
 
+  let articles = await getArticlesByUsername(usernameWithoutAt);
+
   return (
     <main className="p-8">
       <div className="max-w-4xl mx-auto">
         <UserProfile user={user} />
         <div className="article-container">
-          {articles.map((article) => (
+          {articles!.map((article) => (
             <ArticleCard key={article.id} article={article} />
           ))}
+          <LoadMoreArticles username={usernameWithoutAt} />
         </div>
-        {hasMore && (
-          <button onClick={loadArticles} className="load-more-btn">
-            Load More
-          </button>
-        )}
       </div>
     </main>
   );
-};
-
-export default UserProfilePage;
+}
