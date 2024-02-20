@@ -3,7 +3,7 @@ import { NextRequest } from "next/server";
 import { getUserAuth } from "@/lib/auth/utils";
 import { db } from "@/lib/db";
 import { articles, insertArticleSchema } from "@/lib/db/schema/articles";
-import { concat, nanoid, slugify } from "@/lib/utils";
+import { slugify } from "@/lib/utils";
 
 import { err, isErr, ok } from "@justmiracle/result";
 
@@ -17,15 +17,12 @@ export const POST = async (request: NextRequest) => {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const articleId = nanoid(6);
-
   // we might allow user to set their own slug?
-  const slug = concat(slugify(body.slug || body.title), "-", articleId);
+  const slug = slugify(body.slug || body.title);
 
   // validate the body of the request
   const values = insertArticleSchema.safeParse({
     ...body,
-    id: articleId,
     slug: slug,
     userId: session.user.id,
   });
