@@ -1,1 +1,27 @@
-{"version":"5","dialect":"sqlite","entries":[{"idx":0,"version":"5","when":1707848130100,"tag":"0000_pink_taskmaster","breakpoints":true},{"idx":1,"version":"5","when":1708020591313,"tag":"0001_clear_longshot","breakpoints":true}]}
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1707848130100,
+      "tag": "0000_pink_taskmaster",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708020591313,
+      "tag": "0001_clear_longshot",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708348039925,
+      "tag": "0002_boring_mister_fear",
+      "breakpoints": true
+    }
+  ]
+}

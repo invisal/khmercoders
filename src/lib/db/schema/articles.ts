@@ -9,7 +9,7 @@ import { z } from "zod";
 export const articles = sqliteTable("articles", {
   id: text("id")
     .primaryKey()
-    .$defaultFn(() => nanoid()),
+    .$defaultFn(() => nanoid(6)),
 
   userId: text("user_id")
     .notNull()
@@ -17,6 +17,7 @@ export const articles = sqliteTable("articles", {
 
   title: text("title").notNull(),
   description: text("description"),
+  slug: text("slug").notNull().default(""),
   content: text("content").notNull(),
   cover: text("cover"),
 
@@ -47,18 +48,28 @@ export const insertArticleSchema =
 
 // This is the schema we use to validate on the client side
 // it doesnt need to include the id or userId
-export const insertArticleParams = baseSchema.extend({}).omit({
-  id: true,
-  userId: true,
-});
+export const insertArticleParams = baseSchema
+  .extend({})
+  .omit({
+    id: true,
+    userId: true,
+  })
+  .partial({
+    slug: true,
+  });
 
 // The update schema is the same as the base schema
 export const updateArticleSchema = baseSchema;
 
 // Same thing here we exclude the userId from the params cuz this will be used client side
-export const updateArticleParams = baseSchema.extend({}).omit({
-  userId: true,
-});
+export const updateArticleParams = baseSchema
+  .extend({})
+  .omit({
+    userId: true,
+  })
+  .partial({
+    slug: true,
+  });
 
 // Types for articles - used to type API request params and within Components
 export type Article = typeof articles.$inferSelect;

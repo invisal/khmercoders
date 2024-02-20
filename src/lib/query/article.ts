@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 import { db } from "../db";
 import { getUserByUsername } from "./user";
 
@@ -11,12 +13,12 @@ export const getAllArticles = async () => {
   });
 };
 
-export const getArticleById = async (id: string) => {
+export const getArticleById = cache(async (id: string) => {
   return db.query.articles.findFirst({
     where: (field, op) => op.eq(field.id, id),
     with: { author: true },
   });
-};
+});
 
 export const getArticlesByUsername = async (
   username: string,
