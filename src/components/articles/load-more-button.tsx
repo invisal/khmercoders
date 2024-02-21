@@ -37,7 +37,7 @@ const LoadMoreArticles = ({
         <ArticlePreview key={article.id} article={article} />
       ))}
       {hasMore && (
-        <div className="flex justify-center mt-4">
+        <div className="mt-4 flex justify-center">
           <Button variant={"outline"} onClick={loadArticles}>
             Load More
           </Button>

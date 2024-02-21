@@ -37,7 +37,7 @@ export default async function UserProfilePage(prop: UserProfilePageProps) {
 
   return (
     <main className="p-8">
-      <div className="max-w-4xl mx-auto">
+      <div className="mx-auto max-w-4xl">
         <UserProfile user={user} />
         <div className="article-container">
           {articles.map((article) => (
