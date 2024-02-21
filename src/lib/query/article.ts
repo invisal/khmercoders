@@ -20,19 +20,13 @@ export const getArticleById = cache(async (id: string) => {
   });
 });
 
-export const getArticlesByUsername = async (
-  username: string,
+export const getArticlesByUserId = async (
+  userId: string,
   limit = 10,
   offset = 0,
 ) => {
-  const user = await getUserByUsername(username);
-
-  if (!user) {
-    return null; // or throw an error here later ok, ave?
-  }
-
   const articles = await db.query.articles.findMany({
-    where: (articles, { eq }) => eq(articles.userId, user.id),
+    where: (articles, { eq }) => eq(articles.userId, userId),
     limit,
     offset,
     orderBy: (articles, { desc }) => [desc(articles.createdAt)],
@@ -40,4 +34,4 @@ export const getArticlesByUsername = async (
   });
 
   return articles;
-}
+};

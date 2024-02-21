@@ -1,4 +1,4 @@
-import { getArticlesByUsername } from "@/lib/query/article";
+import { getArticlesByUserId } from "@/lib/query/article";
 import { getUserByUsername } from "@/lib/query/user";
 
 import ArticlePreview from "@/components/articles/article-preview";
@@ -17,6 +17,7 @@ export default async function UserProfilePage(prop: UserProfilePageProps) {
 
   const user = await getUserByUsername(usernameWithoutAt);
 
+  // TODO: Handle not found with a custom not found page
   if (!user) {
     return (
       <main className="p-8">
@@ -25,7 +26,7 @@ export default async function UserProfilePage(prop: UserProfilePageProps) {
     );
   }
 
-  let articles = await getArticlesByUsername(usernameWithoutAt);
+  let articles = await getArticlesByUserId(user.id);
 
   if (!articles) {
     return (

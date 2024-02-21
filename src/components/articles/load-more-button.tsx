@@ -19,8 +19,9 @@ const LoadMoreArticles = ({
   const loadArticles = async () => {
     //this should be /api/articles?
     const response = await fetch(
-      `/api/article?username=${username}&limit=10&offset=${offset}`,
+      `/api/users/${username}/articles?&limit=10&offset=${offset}`,
     );
+
     if (response.ok) {
       const newArticles = await response.json();
       setArticles((prev) => [...prev, ...newArticles]);
