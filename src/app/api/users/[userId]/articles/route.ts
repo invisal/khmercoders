@@ -14,8 +14,8 @@ export async function GET(
   const offset = parseInt(searchParams.get("offset") || "0", 10);
 
   const result = await getArticlesByUserId(userId, limit, offset)
-    .then((articles) => ok(articles))
-    .catch((error) => err(error));
+    .then(ok)
+    .catch(err);
 
   if (isErr(result)) {
     return new Response(JSON.stringify({ error: "Failed to fetch articles" }), {
