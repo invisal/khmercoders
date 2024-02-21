@@ -16,7 +16,6 @@ const LoadMoreArticles = ({
   const [articles, setArticles] = useState<any[]>([]);
   const [offset, setOffset] = useState(10);
   const [hasMore, setHasMore] = useState(initialArticleCount > 9);
-  console.log(initialArticleCount);
   const loadArticles = async () => {
     //this should be /api/articles?
     const response = await fetch(

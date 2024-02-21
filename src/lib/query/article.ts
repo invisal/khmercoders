@@ -40,4 +40,4 @@ export const getArticlesByUsername = async (
   });
 
   return articles;
-};
+}

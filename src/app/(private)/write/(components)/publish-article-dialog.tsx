@@ -1,6 +1,7 @@
 "use client";
 
 import { PropsWithChildren, useMemo } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { DRAFT_KEY } from "@/config/keys";
@@ -46,6 +47,13 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
     }
   }, [output]);
 
+  const cover = useMemo(() => {
+    const maybeCover = output.blocks.find((block) => block.type === "image");
+    if (maybeCover) {
+      return maybeCover.data.file.url;
+    }
+  }, [output]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -53,7 +61,7 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
     const data = Object.fromEntries(formData.entries());
 
     const body = {
-      cover: "https://via.placeholder.com/150",
+      cover: cover,
       title: data.title.toString(),
       description: data.description.toString(),
       content: JSON.stringify(output),
@@ -90,9 +98,14 @@ export const PublishArticleDialog = ({ children }: PropsWithChildren) => {
           <div className="space-y-1">
             <Label>Preview</Label>
             <div className="flex aspect-video items-center justify-center rounded-md bg-secondary">
-              <span className="text-muted-foreground">
-                Havent implement file upload yet, jam tich.
-              </span>
+              <Image
+                src={cover}
+                alt="cover"
+                width={0}
+                height={0}
+                sizes="100%"
+                className="size-full rounded-md"
+              />
             </div>
           </div>
 
