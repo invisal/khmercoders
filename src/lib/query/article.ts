@@ -34,6 +34,7 @@ export const getArticlesByUsername = async (
     limit,
     offset,
     orderBy: (articles, { desc }) => [desc(articles.createdAt)],
+    with: { author: true },
   });
 
   return articles;

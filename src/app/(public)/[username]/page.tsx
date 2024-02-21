@@ -1,7 +1,7 @@
 import { getArticlesByUsername } from "@/lib/query/article";
 import { getUserByUsername } from "@/lib/query/user";
 
-import { ArticleCard } from "@/components/articles/article-card";
+import ArticlePreview from "@/components/articles/article-preview";
 import LoadMoreArticles from "@/components/articles/load-more-button";
 import { UserProfile } from "@/components/user-info/user-profile";
 
@@ -27,13 +27,21 @@ export default async function UserProfilePage(prop: UserProfilePageProps) {
 
   let articles = await getArticlesByUsername(usernameWithoutAt);
 
+  if (!articles) {
+    return (
+      <main className="p-8">
+        <div className="text-center">No article found...</div>
+      </main>
+    );
+  }
+
   return (
     <main className="p-8">
       <div className="max-w-4xl mx-auto">
         <UserProfile user={user} />
         <div className="article-container">
-          {articles!.map((article) => (
-            <ArticleCard key={article.id} article={article} />
+          {articles.map((article) => (
+            <ArticlePreview key={article.id} article={article} />
           ))}
           <LoadMoreArticles username={usernameWithoutAt} />
         </div>

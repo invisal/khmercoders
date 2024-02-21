@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import { ArticleCard } from "@/components/articles/article-card";
+import ArticlePreview from "./article-preview";
 
 const LoadMoreArticles = ({ username }: { username: string }) => {
   const [articles, setArticles] = useState<any[]>([]);
@@ -26,7 +26,7 @@ const LoadMoreArticles = ({ username }: { username: string }) => {
   return (
     <>
       {articles.map((article) => (
-        <ArticleCard key={article.id} article={article} />
+        <ArticlePreview key={article.id} article={article} />
       ))}
       {hasMore && <button onClick={loadArticles}>Load More</button>}
     </>
