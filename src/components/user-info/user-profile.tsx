@@ -19,7 +19,7 @@ interface UserProfileProps {
 
 export const UserProfile = ({ user }: UserProfileProps) => {
   return (
-    <div className="flex flex-col items-center rounded-lg bg-card p-4 text-card-foreground shadow">
+    <div className="flex flex-col items-center rounded-lg bg-card p-4 text-card-foreground">
       <Avatar className="size-24">
         <AvatarFallback className="text-4xl uppercase">
           {user.name ? user.name.slice(0, 2) : "CN"}

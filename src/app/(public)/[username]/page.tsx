@@ -39,7 +39,7 @@ export default async function UserProfilePage(prop: UserProfilePageProps) {
     <main className="p-8">
       <div className="mx-auto max-w-4xl">
         <UserProfile user={user} />
-        <div className="article-container">
+        <div className="flex flex-col gap-4">
           {articles.map((article) => (
             <ArticlePreview key={article.id} article={article} />
           ))}

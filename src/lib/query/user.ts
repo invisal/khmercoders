@@ -7,8 +7,7 @@ import { db } from "../db";
  * @return {Promise<user>} the user object
  */
 export const getUserByUsername = async (username: string) => {
-  const user = await db.query.users.findFirst({
+  return await db.query.users.findFirst({
     where: (field, op) => op.eq(field.username, username.toLowerCase()),
   });
-  return user;
 };
