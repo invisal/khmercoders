@@ -1,6 +1,7 @@
 "use client";
 
 import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Button } from "../ui/button";
 
 /* eslint-disable @next/next/no-img-element */
 interface UserProfileProps {
@@ -27,9 +28,7 @@ export const UserProfile = ({ user }: UserProfileProps) => {
       <h2 className="mt-4 font-bold text-xl text-primary">{user.name}</h2>
       <span className="text-muted-foreground">{10} Followers</span>
       <p className="text-center mt-2 text-secondary-foreground">{user.about}</p>
-      <button className="mt-4 font-bold py-2 px-4 rounded bg-primary text-primary-foreground hover:bg-primary-dark">
-        Follow
-      </button>
+      <Button>Follow</Button>
     </div>
   );
 };
