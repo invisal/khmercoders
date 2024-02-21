@@ -2,13 +2,21 @@
 
 import React, { useState } from "react";
 
+import { Button } from "@/components/ui/button";
+
 import ArticlePreview from "./article-preview";
 
-const LoadMoreArticles = ({ username }: { username: string }) => {
+const LoadMoreArticles = ({
+  username,
+  initialArticleCount,
+}: {
+  username: string;
+  initialArticleCount: number;
+}) => {
   const [articles, setArticles] = useState<any[]>([]);
   const [offset, setOffset] = useState(10);
-  const [hasMore, setHasMore] = useState(false);
-
+  const [hasMore, setHasMore] = useState(initialArticleCount > 9);
+  console.log(initialArticleCount);
   const loadArticles = async () => {
     //this should be /api/articles?
     const response = await fetch(
@@ -19,7 +27,7 @@ const LoadMoreArticles = ({ username }: { username: string }) => {
       setArticles((prev) => [...prev, ...newArticles]);
       setOffset((prev) => prev + newArticles.length);
 
-      setHasMore(newArticles.length === 10);
+      setHasMore(newArticles.length > 9);
     }
   };
 
@@ -28,7 +36,13 @@ const LoadMoreArticles = ({ username }: { username: string }) => {
       {articles.map((article) => (
         <ArticlePreview key={article.id} article={article} />
       ))}
-      {hasMore && <button onClick={loadArticles}>Load More</button>}
+      {hasMore && (
+        <div className="flex justify-center mt-4">
+          <Button variant={"outline"} onClick={loadArticles}>
+            Load More
+          </Button>
+        </div>
+      )}
     </>
   );
 };

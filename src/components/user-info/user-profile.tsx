@@ -1,3 +1,7 @@
+"use client";
+
+import { Avatar, AvatarFallback } from "../ui/avatar";
+
 /* eslint-disable @next/next/no-img-element */
 interface UserProfileProps {
   user: {
@@ -14,16 +18,16 @@ interface UserProfileProps {
 
 export const UserProfile = ({ user }: UserProfileProps) => {
   return (
-    <div className="flex flex-col items-center p-4 bg-black shadow rounded-lg">
-      <img
-        className="size-24 rounded-full object-cover"
-        src={user.avatar || "https://via.placeholder.com/150"}
-        alt={user.name || "User"}
-      />
-      <h2 className="mt-4 font-bold text-xl">{user.name}</h2>
-      <span className="text-gray-600">{10} Followers</span>
-      <p className="text-center text-gray-500 mt-2">{user.about}</p>
-      <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+    <div className="flex flex-col items-center p-4 shadow rounded-lg bg-card text-card-foreground">
+      <Avatar className="size-24">
+        <AvatarFallback className="uppercase text-4xl">
+          {user.name ? user.name.slice(0, 2) : "CN"}
+        </AvatarFallback>
+      </Avatar>
+      <h2 className="mt-4 font-bold text-xl text-primary">{user.name}</h2>
+      <span className="text-muted-foreground">{10} Followers</span>
+      <p className="text-center mt-2 text-secondary-foreground">{user.about}</p>
+      <button className="mt-4 font-bold py-2 px-4 rounded bg-primary text-primary-foreground hover:bg-primary-dark">
         Follow
       </button>
     </div>

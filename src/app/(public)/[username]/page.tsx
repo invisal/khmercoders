@@ -43,7 +43,10 @@ export default async function UserProfilePage(prop: UserProfilePageProps) {
           {articles.map((article) => (
             <ArticlePreview key={article.id} article={article} />
           ))}
-          <LoadMoreArticles username={usernameWithoutAt} />
+          <LoadMoreArticles
+            username={usernameWithoutAt}
+            initialArticleCount={articles.length}
+          />
         </div>
       </div>
     </main>
