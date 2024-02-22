@@ -17,13 +17,15 @@ export interface ArticlePreviewProps {
 
 export default function ArticlePreview({ article }: ArticlePreviewProps) {
   return (
-    <Link href={`/@${article.author.username}/${article.id}`}>
-      <Card>
+    <Link href={`/@${article.author.name}/${article.id}`}>
+      <Card className="flex h-full flex-col">
         <CardHeader>
-          <CardTitle>{article.title}</CardTitle>
-          <CardDescription>{article.description}</CardDescription>
+          <CardTitle className="truncate">{article.title}</CardTitle>
+          <CardDescription className="line-clamp-2">
+            {article.description}
+          </CardDescription>
         </CardHeader>
-        <CardFooter>
+        <CardFooter className="mt-auto">
           <div className="flex gap-4">
             <Avatar>
               <AvatarFallback className="uppercase">
@@ -31,7 +33,9 @@ export default function ArticlePreview({ article }: ArticlePreviewProps) {
               </AvatarFallback>
             </Avatar>
             <div>
-              <div className="text-sm font-semibold">{article.author.name}</div>
+              <div className="truncate text-sm font-semibold">
+                {article.author.name}
+              </div>
               <div className="text-xs">20 articles</div>
             </div>
           </div>
