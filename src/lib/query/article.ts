@@ -12,6 +12,14 @@ export const getAllArticles = async () => {
   });
 };
 
+export const getLatestArticles = async () => {
+  return db.query.articles.findMany({
+    with: { author: true },
+    orderBy: (articles, { desc }) => [desc(articles.createdAt)],
+    limit: 6,
+  });
+};
+
 export const getArticleById = cache(async (id: string) => {
   return db.query.articles.findFirst({
     where: (field, op) => op.eq(field.id, id),
