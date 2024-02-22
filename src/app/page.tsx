@@ -12,7 +12,7 @@ export const revalidate = 0;
 
 export default async function HomePage() {
   const session = await getUserAuth();
-  const articles = await getLatestArticles();
+  const articles = await getLatestArticles({ limit: 6, offset: 0 });
 
   return (
     <div>
