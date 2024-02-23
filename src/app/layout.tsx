@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: "A unified blog platform for khmer coders.",
   openGraph: {
     images: ["/khmercoder.svg"],
-  }
+  },
 };
 
 export default function RootLayout({
