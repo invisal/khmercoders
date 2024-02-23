@@ -20,7 +20,7 @@ export const env = createEnv({
   },
 
   client: {
-    NEXT_PUBLIC_SITE_URL: z.string().min(1),
+    NEXT_PUBLIC_SITE_URL: z.string().min(1).default("http://localhost:3000"),
   },
 
   // runtimeEnv: {
