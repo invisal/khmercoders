@@ -14,29 +14,27 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const article = await getArticleById(getIdFromSlug(props.params.slug));
   if (!article) {
-    throw new Error("Article not found");
+    return {};
   }
 
   const imageUrl = article.cover || "";
-  const author = article.author;
 
-  if (!author) {
-    return {};
-  }
   return {
     title: article.title,
     description: article.description,
-    creator: author.username,
+    creator: article.author.username,
     authors: [
       {
-        name: author.username,
-        url: `${process.env.SITE_URL}/${author.username}` || "",
+        name: article.author.username,
+        url: `${process.env.SITE_URL}/${article.author.username}` || "",
       },
     ],
     publisher: "KhmerCoders",
     openGraph: {
       type: "article",
-      url: `${process.env.SITE_URL}/${author.username}/${article.slug}` || "",
+      url:
+        `${process.env.SITE_URL}/${article.author.username}/${article.slug}` ||
+        "",
       images: [{ url: imageUrl, alt: article.title }],
     },
     twitter: {
