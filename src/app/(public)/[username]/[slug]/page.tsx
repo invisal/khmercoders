@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import { env } from "@/lib/env.mjs";
 import { getArticleById } from "@/lib/query/article";
 import { getIdFromSlug } from "@/lib/utils";
 
@@ -26,14 +27,14 @@ export async function generateMetadata(
     authors: [
       {
         name: article.author.username,
-        url: `${process.env.SITE_URL}/${article.author.username}` || "",
+        url: `${env.NEXT_PUBLIC_SITE_URL}/${article.author.username}` || "",
       },
     ],
     publisher: "KhmerCoders",
     openGraph: {
       type: "article",
       url:
-        `${process.env.SITE_URL}/${article.author.username}/${article.slug}` ||
+        `${env.NEXT_PUBLIC_SITE_URL}/${article.author.username}/${article.slug}` ||
         "",
       images: [{ url: imageUrl, alt: article.title }],
     },

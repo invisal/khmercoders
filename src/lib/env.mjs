@@ -19,7 +19,9 @@ export const env = createEnv({
     R2_SECRET_ACCESS_KEY: z.string().min(1),
   },
 
-  client: {},
+  client: {
+    NEXT_PUBLIC_SITE_URL: z.string().min(1),
+  },
 
   // runtimeEnv: {
   //   DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
