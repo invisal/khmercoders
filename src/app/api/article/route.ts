@@ -2,7 +2,11 @@ import { NextRequest } from "next/server";
 
 import { getUserAuth } from "@/lib/auth/utils";
 import { db } from "@/lib/db";
-import { articles, insertArticleSchema } from "@/lib/db/schema/articles";
+import {
+  articles,
+  insertArticleSchema,
+  updateArticleSchema,
+} from "@/lib/db/schema/articles";
 import { slugify } from "@/lib/utils";
 
 import { err, isErr, ok } from "@justmiracle/result";
