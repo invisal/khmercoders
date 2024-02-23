@@ -27,8 +27,6 @@ export const UpdateArticleDialog = ({ children }: PropsWithChildren) => {
   const router = useRouter();
   const { output, article } = useQuickContext<EditPageContext>();
 
-  console.log(article);
-
   const title = useMemo(() => {
     const maybeTitle = output.blocks.find((block) => block.type === "header");
     if (maybeTitle) {
