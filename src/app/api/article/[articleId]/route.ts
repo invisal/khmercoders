@@ -37,8 +37,9 @@ export const PUT = async (
   const values = updateArticleSchema.safeParse({
     ...body,
   });
+
   if (!values.success) {
-    return new Response(JSON.stringify({ error: values.error.message }), {
+    return new Response(JSON.stringify({ error: values.error }), {
       status: 400,
     });
   }
@@ -56,4 +57,21 @@ export const PUT = async (
   }
 
   return new Response(JSON.stringify(updatedArticle), { status: 200 });
+};
+
+export const GET = async (
+  request: NextRequest,
+  { params }: { params: { articleId: string } },
+) => {
+  const articleId = params.articleId;
+
+  const article = await getArticleById(articleId);
+
+  if (!article) {
+    return new Response(JSON.stringify({ error: "Article not found" }), {
+      status: 404,
+    });
+  }
+
+  return new Response(JSON.stringify(article), { status: 200 });
 };
