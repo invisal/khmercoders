@@ -13,7 +13,7 @@ import Embed from "@editorjs/embed";
 import Header from "@editorjs/header";
 import Image from "@editorjs/image";
 import InlineCode from "@editorjs/inline-code";
-import Link from "@editorjs/link";
+import LinkTool from "@editorjs/link";
 import NestedList from "@editorjs/nested-list";
 import Paragraph from "@editorjs/paragraph";
 import Table from "@editorjs/table";
@@ -54,7 +54,12 @@ export const tools: Record<string, ToolSettings | ToolConstructable> = {
   delimiter: Delimiter,
   table: Table,
   embed: Embed,
-  fancyLink: Link,
+  fancyLink: {
+    class: LinkTool,
+    config: {
+      endpoint: "/api/link-preview",
+    },
+  },
   code: Code,
   strikethrough: StrikeThrough,
 
