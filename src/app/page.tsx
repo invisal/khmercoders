@@ -1,22 +1,17 @@
-import { getUserAuth } from "@/lib/auth/utils";
 import { getLatestArticles } from "@/lib/query/article";
 
 import ArticlePreview from "@/components/articles/article-preview";
-import Footer from "@/components/footer";
 import HeroBanner from "@/components/hero-banner";
-import { Navbar } from "@/components/navbar";
+import MasterLayout from "@/components/master-layout";
 
 // revalidate on every request
 export const revalidate = 0;
 
 export default async function HomePage() {
-  const session = await getUserAuth();
   const articles = await getLatestArticles({ limit: 6, offset: 0 });
 
   return (
-    <div>
-      <Navbar session={session} />
-
+    <MasterLayout>
       <main className="container mx-auto">
         <HeroBanner />
 
@@ -32,8 +27,6 @@ export default async function HomePage() {
           </div>
         </div>
       </main>
-
-      <Footer />
-    </div>
+    </MasterLayout>
   );
 }

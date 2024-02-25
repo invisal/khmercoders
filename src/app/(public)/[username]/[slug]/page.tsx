@@ -4,6 +4,7 @@ import { env } from "@/lib/env.mjs";
 import { getArticleById } from "@/lib/query/article";
 import { getIdFromSlug } from "@/lib/utils";
 
+import MasterLayout from "@/components/master-layout";
 import { Article } from "@/components/renderer";
 
 interface ArticlePageProps {
@@ -67,11 +68,13 @@ export default async function ArticlePage(props: ArticlePageProps) {
   }
 
   return (
-    <main className="p-8">
-      <Article
-        content={article.content}
-        className="prose prose-orange mx-auto dark:prose-invert"
-      />
-    </main>
+    <MasterLayout>
+      <main className="p-8">
+        <Article
+          content={article.content}
+          className="prose prose-orange mx-auto dark:prose-invert"
+        />
+      </main>
+    </MasterLayout>
   );
 }
