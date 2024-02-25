@@ -11,8 +11,15 @@ import { ThemeProvider } from "@/components/theme/provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "KhmerCoder Blog",
+  metadataBase: new URL("https://khmercoders.vercel.app"),
+  title: {
+    default: "KhmerCoders",
+    template: "%s | Khmercoders",
+  },
   description: "A unified blog platform for khmer coders.",
+  openGraph: {
+    images: ["/khmercoder.svg"],
+  },
 };
 
 export default function RootLayout({
