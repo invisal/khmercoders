@@ -26,9 +26,7 @@ export const UserProfile = ({ user }: UserProfileProps) => {
         </AvatarFallback>
       </Avatar>
       <h2 className="mt-4 text-xl font-bold text-primary">{user.name}</h2>
-      <span className="text-muted-foreground">{10} Followers</span>
       <p className="mt-2 text-center text-secondary-foreground">{user.about}</p>
-      <Button>Follow</Button>
     </div>
   );
 };
