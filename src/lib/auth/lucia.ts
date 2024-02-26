@@ -5,6 +5,7 @@ import { sqlite } from "@/lib/db/index";
 
 import { env } from "../env.mjs";
 import { libsql } from "@lucia-auth/adapter-sqlite";
+import { github } from "@lucia-auth/oauth/providers";
 import { lucia } from "lucia";
 import { nextjs_future } from "lucia/middleware";
 
@@ -24,6 +25,13 @@ export const auth = lucia({
       name: data.name,
     };
   },
+});
+
+export const githubAuth = github(auth, {
+  clientId: process.env.GITHUB_CLIENT_ID ?? "",
+  clientSecret: process.env.GITHUB_CLIENT_SECRET ?? "",
+  redirectUri: process.env.GITHUB_REDIRECT_URI ?? "",
+  scope: ["read:user"],
 });
 
 export type Auth = typeof auth;
