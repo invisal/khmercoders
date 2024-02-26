@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { getUserAuth } from "@/lib/auth/utils";
 
+import metaScraper from "open-graph-scraper";
 import urlMetaData from "url-metadata";
 
 export async function GET(request: NextRequest) {
@@ -9,24 +10,47 @@ export async function GET(request: NextRequest) {
   if (!session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  try {
-    const url = request.nextUrl.searchParams.get("url");
 
-    const metadata = await urlMetaData(url);
+  const url = request.nextUrl.searchParams.get("url");
 
-    const response = {
-      success: 1,
-      meta: {
-        title: metadata.title,
-        description: metadata.description,
-        image: {
-          url: metadata["og:image"],
-        },
-      },
-    };
-    return NextResponse.json(response);
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Server error" }, { status: 500 });
+  if (!url) {
+    return NextResponse.json({ error: "Invalid URL" }, { status: 400 });
   }
+
+  const domain = new URL(url).origin;
+
+  return metaScraper({ url: url })
+    .then((data) => {
+      const { error, result } = data;
+
+      if (error) {
+        console.error("Error fetching metadata:", error);
+        return NextResponse.json({ error: error }, { status: 500 });
+      }
+
+      let imageUrl =
+        (result.ogImage && result.ogImage[0]?.url) || result.favicon || "";
+
+      if (imageUrl.startsWith("/")) {
+        imageUrl = domain + imageUrl;
+      }
+
+      const response = {
+        success: 1,
+        link: url,
+        meta: {
+          title: result.ogTitle || "",
+          description: result.ogDescription || "",
+          image: {
+            url: imageUrl,
+          },
+        },
+      };
+
+      return NextResponse.json(response);
+    })
+    .catch((error) => {
+      console.error("Error fetching metadata:", error);
+      return NextResponse.json({ error: "Server error" }, { status: 500 });
+    });
 }
