@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 import { env } from "@/lib/env.mjs";
-import { getArticleById } from "@/lib/query/article";
+import { getArticleById, incrementArticleView } from "@/lib/query/article";
 import { getIdFromSlug } from "@/lib/utils";
 
 import MasterLayout from "@/components/master-layout";
@@ -15,10 +15,12 @@ export async function generateMetadata(
   props: ArticlePageProps,
 ): Promise<Metadata> {
   const article = await getArticleById(getIdFromSlug(props.params.slug));
+
   if (!article) {
     return {};
   }
 
+  await incrementArticleView(article.id);
   const imageUrl = article.cover || "";
 
   return {

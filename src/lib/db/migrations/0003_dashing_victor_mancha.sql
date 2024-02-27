@@ -1,0 +1,1 @@
+ALTER TABLE articles ADD `view_count` integer DEFAULT 0;
