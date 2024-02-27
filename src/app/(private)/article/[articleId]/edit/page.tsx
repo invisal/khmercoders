@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
-import { CompleteArticle, updateArticleById } from "@/lib/query/article";
+import { CompleteArticle } from "@/lib/query/article";
 import { useDebounceCallback } from "@/hooks/use-debounce-callback";
 
 import { Navbar } from "./(components)/navbar";
@@ -44,6 +44,7 @@ export default function EditArticlePage(prop: EditArticlePageProps) {
     description: null,
     slug: "",
     cover: null,
+    viewCount: 0,
     author: {
       id: "",
       name: "",
