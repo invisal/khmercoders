@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "../ui/button";
 import HeroBannerMedia from "./hero-banner-media";
 
@@ -13,9 +15,13 @@ export default function HeroBanner() {
         </p>
 
         <div className="flex gap-4">
-          <Button>Join Facebook</Button>
+          <Link href="https://www.facebook.com/groups/1104437376352783">
+            <Button>Join Facebook</Button>
+          </Link>
 
-          <Button>Join Discord</Button>
+          <Link href="https://discord.gg/3MrD2KFWCN">
+            <Button>Join Discord</Button>
+          </Link>
         </div>
       </div>
       <HeroBannerMedia />
