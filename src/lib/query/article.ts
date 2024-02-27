@@ -2,9 +2,7 @@ import { cache } from "react";
 
 import { db } from "../db";
 import { articles } from "../db/schema/articles";
-import { eq } from "drizzle-orm";
-import { getUserByUsername } from "./user";
-
+import { eq, sql } from "drizzle-orm";
 
 export type CompleteArticle = Awaited<
   ReturnType<typeof getAllArticles>
@@ -55,3 +53,11 @@ export const getArticlesByUserId = async (
   return articles;
 };
 
+export async function incrementArticleView(articleId: string) {
+  await db
+    .update(articles)
+    .set({
+      viewCount: sql`view_count + 1`,
+    })
+    .where(eq(articles.id, articleId));
+}

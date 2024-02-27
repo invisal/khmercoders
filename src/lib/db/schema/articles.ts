@@ -2,7 +2,7 @@ import { nanoid, timestamps } from "@/lib/utils";
 
 import { users } from "./auth";
 import { relations, sql } from "drizzle-orm";
-import { sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -20,6 +20,8 @@ export const articles = sqliteTable("articles", {
   slug: text("slug").notNull().default(""),
   content: text("content").notNull(),
   cover: text("cover"),
+
+  viewCount: int("view_count").default(0),
 
   createdAt: text("created_at")
     .notNull()
