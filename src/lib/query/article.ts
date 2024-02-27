@@ -1,7 +1,10 @@
 import { cache } from "react";
 
 import { db } from "../db";
+import { articles } from "../db/schema/articles";
+import { eq } from "drizzle-orm";
 import { getUserByUsername } from "./user";
+
 
 export type CompleteArticle = Awaited<
   ReturnType<typeof getAllArticles>
@@ -29,6 +32,13 @@ export const getArticleById = cache(async (id: string) => {
   });
 });
 
+export async function updateArticleById(
+  id: string,
+  updatedData: Partial<CompleteArticle>,
+) {
+  return await db.update(articles).set(updatedData).where(eq(articles.id, id));
+}
+
 export const getArticlesByUserId = async (
   userId: string,
   limit = 10,
@@ -44,3 +54,4 @@ export const getArticlesByUserId = async (
 
   return articles;
 };
+
