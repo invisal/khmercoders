@@ -41,8 +41,12 @@ export const MobileMenu = ({ isLogin }: MobileMenuProps) => {
               {menuItem.text}
             </Link>
           ))}
+          {isLogin && (
+            <Button onClick={signOut} className="self-start">
+              Sign Out
+            </Button>
+          )}
         </div>
-        {isLogin && <Button onClick={signOut}>Sign Out</Button>}
       </SheetContent>
     </Sheet>
   );
