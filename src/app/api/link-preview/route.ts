@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { getUserAuth } from "@/lib/auth/utils";
 
 import metaScraper from "open-graph-scraper";
-import urlMetaData from "url-metadata";
 
 export async function GET(request: NextRequest) {
   const { session } = await getUserAuth();
