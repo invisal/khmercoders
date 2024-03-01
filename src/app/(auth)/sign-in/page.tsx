@@ -22,6 +22,10 @@ const Page = async () => {
         <Input type="password" name="password" id="password" />
         <br />
       </AuthForm>
+      <a href="api/oauth2/github" className="buttonClass">
+        Sign in with GitHub
+      </a>
+
       <div className="mt-4 text-center text-sm text-muted-foreground">
         Don&apos;t have an account yet?{" "}
         <Link
