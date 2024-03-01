@@ -15,11 +15,11 @@ import { OutputBlockData } from "@editorjs/editorjs";
 export const LinkPreview = (data: OutputBlockData) => {
   const url = new URL(data.data.link);
   const domain = url.hostname;
-  if (!data.data.meta) {
+  if (!data.data.meta.title && !data.data.meta.description) {
     return <Link href={data.data.link}>{data.data.link}</Link>;
   }
 
-  console.log(data.data.meta.image.url);
+  console.log(data);
 
   return (
     <Link href={data.data.link} className="no-underline">
@@ -40,13 +40,15 @@ export const LinkPreview = (data: OutputBlockData) => {
             </CardDescription>
           </CardContent>
         </div>
-        <div className="h-24 w-full md:w-36 lg:pr-6">
-          <img
-            src={data.data.meta.image.url}
-            alt={data.data.title}
-            className="size-full rounded-lg object-cover"
-          />
-        </div>
+        {data.data.meta.image?.url && (
+          <div className="h-22 w-24 md:w-36 lg:pr-6">
+            <img
+              src={data.data.meta.image.url}
+              alt={data.data.title}
+              className="size-full rounded-lg object-cover"
+            />
+          </div>
+        )}
       </Card>
     </Link>
   );
