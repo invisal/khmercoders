@@ -9,6 +9,7 @@ export type AuthSession = {
       name?: string;
       email?: string;
       username?: string;
+      isWritable: boolean;
     };
   } | null;
 };
@@ -23,6 +24,7 @@ export const getUserAuth = async (): Promise<AuthSession> => {
         name: session.user?.name,
         email: session.user?.email,
         username: session.user?.username,
+        isWritable: session.user?.isWritable,
       },
     },
   };

@@ -1,7 +1,7 @@
 import { articles } from "./articles";
 import { userUploads } from "./user-uploads";
 import { relations, sql } from "drizzle-orm";
-import { blob, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { blob, int, sqliteTable, text } from "drizzle-orm/sqlite-core";
 
 export const users = sqliteTable("user", {
   id: text("id").primaryKey(),
@@ -10,7 +10,7 @@ export const users = sqliteTable("user", {
   username: text("username").unique().notNull(),
   avatar: text("avatar"),
   about: text("about"),
-
+  isWritable: int("is_writable").default(0),
   createdAt: text("created_at")
     .notNull()
     .default(sql`CURRENT_TIMESTAMP`),
