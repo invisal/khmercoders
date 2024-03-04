@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { env } from "@/lib/env.mjs";
 import { getArticleById, incrementArticleView } from "@/lib/query/article";
@@ -60,13 +61,8 @@ export default async function ArticlePage(props: ArticlePageProps) {
 
   const article = await getArticleById(articleId);
 
-  // TODO: Handle not found with a custom not found page
   if (!article) {
-    return (
-      <main className="p-8">
-        <div className="text-center">Article not found</div>
-      </main>
-    );
+    return notFound();
   }
 
   return (
