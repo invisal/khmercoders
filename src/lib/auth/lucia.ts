@@ -20,8 +20,6 @@ export const auth = lucia({
   middleware: nextjs_future(),
   sessionCookie: { expires: false },
   getUserAttributes: (data) => {
-    console.log("get attr", data);
-
     return {
       username: data.username,
       email: data.email,

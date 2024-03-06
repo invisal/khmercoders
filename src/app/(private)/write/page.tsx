@@ -1,52 +1,15 @@
-"use client";
+import { notFound } from "next/navigation";
 
-import { useState } from "react";
-import dynamic from "next/dynamic";
+import { getPageSession } from "@/lib/auth/lucia";
 
-import { DEFAULT_BLOCKS } from "@/config/default-blocks";
-import { DRAFT_KEY } from "@/config/keys";
-import { useDebounceCallback } from "@/hooks/use-debounce-callback";
+import WritePageBody from "./page-write";
 
-import { Navbar } from "./(components)/navbar";
-import { QuickProvider } from "@/contexts/quick";
-import { OutputData } from "@editorjs/editorjs";
-import type Editorjs from "@editorjs/editorjs";
-import { useLocalStorage } from "@mantine/hooks";
+export default async function WritePage() {
+  const user = await getPageSession();
 
-const Editor = dynamic(
-  () => import("@/components/editor").then((mod) => mod.Editor),
-  { ssr: false },
-);
+  if (!user?.user.isWritable) {
+    return notFound();
+  }
 
-export interface WritePageContext {
-  output: OutputData;
-  isSaving: boolean;
-}
-
-export default function WritePage() {
-  const [isSaving, setIsSaving] = useState(false);
-  const [output, setOutput] = useLocalStorage<OutputData>({
-    key: DRAFT_KEY,
-    defaultValue: DEFAULT_BLOCKS,
-  });
-
-  const toggleIsSaving = () => setIsSaving((prev) => !prev);
-
-  const handleOnChange = useDebounceCallback(async (editor: Editorjs) => {
-    toggleIsSaving();
-    const newOutput = await editor.save();
-    setOutput(newOutput);
-    toggleIsSaving();
-  }, 300);
-
-  return (
-    <QuickProvider value={{ output, isSaving }}>
-      <div className="mx-auto max-w-[80ch]">
-        <Navbar />
-        <main className="p-10">
-          <Editor data={output} onChange={handleOnChange} autofocus />
-        </main>
-      </div>
-    </QuickProvider>
-  );
+  return <WritePageBody />;
 }

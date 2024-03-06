@@ -20,7 +20,7 @@ import {
 import { FatInput } from "@/components/ui/fat-input";
 import { Label } from "@/components/ui/label";
 
-import { WritePageContext } from "../page";
+import { WritePageContext } from "../page-write";
 import { useQuickContext } from "@/contexts/quick";
 import axios from "axios";
 import { convert } from "html-to-text";

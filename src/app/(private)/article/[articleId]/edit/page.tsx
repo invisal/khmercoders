@@ -54,6 +54,7 @@ export default function EditArticlePage(prop: EditArticlePageProps) {
       about: null,
       createdAt: "",
       updatedAt: "",
+      isWritable: 0,
     },
   });
 

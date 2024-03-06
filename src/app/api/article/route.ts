@@ -17,7 +17,7 @@ export const POST = async (request: NextRequest) => {
 
   // validate auth
   const { session } = await getUserAuth();
-  if (!session) {
+  if (!session || !session.user.isWritable) {
     return new Response("Unauthorized", { status: 401 });
   }
 

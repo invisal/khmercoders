@@ -47,15 +47,17 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
 
       {isLogin && (
         <ul className="hidden items-center gap-x-5 lg:flex">
-          <li>
-            <Link
-              href="/write"
-              className="flex items-center gap-x-2 text-sm font-medium text-muted-foreground hover:text-foreground"
-            >
-              <IconEdit size={18} />
-              <span>Write</span>
-            </Link>
-          </li>
+          {session.session?.user.isWritable && (
+            <li>
+              <Link
+                href="/write"
+                className="flex items-center gap-x-2 text-sm font-medium text-muted-foreground hover:text-foreground"
+              >
+                <IconEdit size={18} />
+                <span>Write</span>
+              </Link>
+            </li>
+          )}
 
           <li>
             <ProfileDropdown />

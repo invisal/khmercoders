@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { ProfileDropdown } from "@/components/navbar/profile-dropdown";
 
-import { WritePageContext } from "../page";
+import { WritePageContext } from "../page-write";
 import { PublishArticleDialog } from "./publish-article-dialog";
 import { useQuickContext } from "@/contexts/quick";
 
