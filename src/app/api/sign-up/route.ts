@@ -48,6 +48,7 @@ export const POST = async (request: NextRequest) => {
         username,
         name: "",
         email: "",
+        is_writable: 0,
       },
     });
 
