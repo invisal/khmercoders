@@ -29,6 +29,7 @@ export const GET = async (request: NextRequest) => {
           username: githubUser.login,
           name: githubUser.name || "",
           email: githubUser.email || "",
+          is_writable: 0,
         },
       });
       return user;

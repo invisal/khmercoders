@@ -3,10 +3,11 @@ import * as context from "next/headers";
 
 import { sqlite } from "@/lib/db/index";
 
+import { users } from "../db/schema/auth";
 import { env } from "../env.mjs";
 import { libsql } from "@lucia-auth/adapter-sqlite";
 import { github } from "@lucia-auth/oauth/providers";
-import { lucia } from "lucia";
+import { lucia, UserSchema } from "lucia";
 import { nextjs_future } from "lucia/middleware";
 
 export const auth = lucia({
@@ -23,6 +24,7 @@ export const auth = lucia({
       username: data.username,
       email: data.email,
       name: data.name,
+      isWritable: data.is_writable > 0,
     };
   },
 });
