@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
+import useSignOut from "@/hooks/use-signout";
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import {
@@ -11,22 +12,9 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { IconLogout, IconSettings, IconUser } from "@tabler/icons-react";
-import { toast } from "sonner";
 
 export const ProfileDropdown = () => {
-  const router = useRouter();
-  const handleSignout = async () => {
-    const response = await fetch("/api/sign-out", {
-      method: "POST",
-      redirect: "manual",
-    });
-
-    if (response.status === 0) {
-      return router.refresh();
-    }
-
-    toast.error("Failed to signout");
-  };
+  const signOut = useSignOut();
 
   return (
     <div>
@@ -59,7 +47,7 @@ export const ProfileDropdown = () => {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem
-            onClick={handleSignout}
+            onClick={signOut}
             className="flex cursor-pointer gap-x-2 hover:!text-destructive focus:!text-destructive"
           >
             <IconLogout size={16} />

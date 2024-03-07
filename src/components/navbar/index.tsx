@@ -5,12 +5,10 @@ import { AuthSession } from "@/lib/auth/utils";
 
 import { Logo } from "../logo";
 import { ThemeToggle } from "../theme/toggle";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import { MobileMenu } from "./mobile-menu";
 import { ProfileDropdown } from "./profile-dropdown";
 import { IconEdit } from "@tabler/icons-react";
-import { LucideMenu } from "lucide-react";
 
 interface NavBarProps {
   session: AuthSession;
@@ -65,33 +63,7 @@ export const Navbar = ({ session }: Readonly<NavBarProps>) => {
         </ul>
       )}
 
-      <Sheet>
-        <SheetTrigger>
-          <LucideMenu className="lg:hidden" />
-        </SheetTrigger>
-        <SheetContent>
-          <Avatar className="mb-8 size-9 border hover:brightness-95">
-            <AvatarFallback>JD</AvatarFallback>
-            <AvatarImage
-              alt="profile"
-              sizes="40px"
-              src="https://avatars.githubusercontent.com/u/20983608?v=4"
-            />
-          </Avatar>
-
-          <div className="flex flex-col gap-2">
-            {MENU.map((menuItem) => (
-              <Link
-                href={menuItem.link}
-                key={menuItem.text}
-                className="px-2 py-1"
-              >
-                {menuItem.text}
-              </Link>
-            ))}
-          </div>
-        </SheetContent>
-      </Sheet>
+      <MobileMenu isLogin={isLogin} />
     </nav>
   );
 };
